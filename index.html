@@ -1,0 +1,495 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TIKARKHANJI JAWAHARLAL NEHRU YOUTH COMPUTER TRAINING INSTITUTE</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+    <style>
+        :root {
+            /* 3D Professional Palette */
+            --primary: #007bff;
+            --dark-blue: #004494;
+            --sky-gradient: linear-gradient(135deg, #e0f2ff 0%, #f0f8ff 100%);
+            --card-gradient: linear-gradient(145deg, #ffffff, #e6e6e6);
+            --gold: #d4af37; /* Gold for Certificate */
+            --white: #ffffff;
+            --accent: #ff4757;
+            --whatsapp: #25d366;
+            --text-dark: #2c3e50;
+            --shadow-3d: 10px 10px 20px #bebebe, -10px -10px 20px #ffffff;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Poppins', sans-serif; scroll-behavior: smooth; }
+        
+        body { 
+            background: var(--sky-gradient);
+            color: var(--text-dark); 
+            overflow-x: hidden; 
+        }
+
+        /* --- 1. Scrolling Header --- */
+        nav {
+            display: flex; justify-content: space-between; align-items: center;
+            padding: 0 5%; position: fixed; width: 100%; top: 0;
+            background: rgba(255, 255, 255, 0.95); 
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            backdrop-filter: blur(10px);
+            z-index: 1000; height: 60px;
+        }
+
+        .scrolling-wrapper { flex: 1; overflow: hidden; white-space: nowrap; margin-right: 20px; }
+
+        .scrolling-text {
+            display: inline-block; font-weight: 700; font-size: 1rem; color: var(--primary);
+            text-transform: uppercase; animation: scrollText 25s linear infinite;
+        }
+        @keyframes scrollText { 0% { transform: translateX(100%); } 100% { transform: translateX(-100%); } }
+
+        /* --- 2. 3D Hero Slider (5 Images) --- */
+        .slider-container { 
+            position: relative; width: 100%; height: 65vh; overflow: hidden; margin-top: 60px; 
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+        .slider { 
+            display: flex; width: 500%; /* 5 images x 100% */
+            height: 100%; transition: transform 1s cubic-bezier(0.68, -0.55, 0.27, 1.55); 
+        }
+        .slide { width: 100%; height: 100%; position: relative; }
+        .slide img { width: 100%; height: 100%; object-fit: cover; }
+        .slide-overlay {
+            position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+            background: linear-gradient(to right, rgba(0,0,0,0.8), transparent);
+            display: flex; flex-direction: column; justify-content: center; padding-left: 8%;
+        }
+        .slide-overlay h1 { 
+            color: white; font-size: clamp(2rem, 5vw, 3.5rem); margin-bottom: 10px; 
+            text-shadow: 3px 3px 0px var(--primary); transform: translateZ(50px);
+        }
+        .slide-overlay p { color: #f1f1f1; font-size: 1.2rem; margin-bottom: 25px; }
+
+        /* --- 3. 3D Course Grid --- */
+        .section-padding { padding: 70px 5%; }
+        .section-title { text-align: center; margin-bottom: 50px; }
+        .section-title h2 { 
+            color: var(--primary); font-size: 2.2rem; font-weight: 800; 
+            text-transform: uppercase; text-shadow: 2px 2px 5px rgba(0,0,0,0.1);
+        }
+        
+        .course-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px; }
+
+        .course-card { 
+            background: var(--card-gradient); padding: 40px 20px; border-radius: 20px; 
+            text-align: center; position: relative; overflow: hidden;
+            box-shadow: var(--shadow-3d); transition: all 0.4s ease;
+            transform-style: preserve-3d; perspective: 1000px;
+        }
+        
+        .course-card:hover { transform: translateY(-15px) rotateX(5deg); }
+        .course-card i { font-size: 3.5rem; color: var(--primary); margin-bottom: 20px; text-shadow: 2px 5px 5px rgba(0,0,0,0.2); }
+        .popular-badge { 
+            position: absolute; top: 15px; right: -35px; background: linear-gradient(45deg, #ffb700, #ff8c00); 
+            color: white; padding: 7px 40px; transform: rotate(45deg); font-size: 0.75rem; font-weight: 800; 
+            box-shadow: 0 5px 10px rgba(0,0,0,0.2);
+        }
+
+        /* --- 4. Comparison 3D Style --- */
+        .comparison-wrapper { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; margin-top: 30px; }
+        .comp-card { 
+            padding: 30px; border-radius: 20px; 
+            box-shadow: var(--shadow-3d); transition: 0.3s;
+        }
+        .comp-us { background: linear-gradient(145deg, #e3f2fd, #ffffff); border-left: 5px solid var(--primary); }
+        .comp-others { background: #f9f9f9; opacity: 0.8; }
+        
+        .comp-list { list-style: none; margin-top: 15px; }
+        .comp-list li { margin-bottom: 12px; display: flex; gap: 10px; align-items: center; font-weight: 500; }
+        .comp-us li i { color: var(--success); font-size: 1.2rem; }
+
+        /* --- 5. Fee 3D Card --- */
+        .fee-section { margin-top: 50px; display: flex; justify-content: center; gap: 30px; flex-wrap: wrap; }
+        .fee-card { 
+            flex: 1; min-width: 280px; padding: 30px; text-align: center; border-radius: 20px; 
+            box-shadow: var(--shadow-3d);
+        }
+        .fee-us { 
+            background: linear-gradient(135deg, #0056b3, #004494); color: white; 
+            transform: scale(1.05); border: 2px solid white;
+        }
+        .price-final { 
+            font-size: 2.5rem; font-weight: 800; color: #ffb700; display: block; margin-top: 10px; 
+            text-shadow: 0 0 10px rgba(255, 183, 0, 0.5); animation: pulse 1.5s infinite; 
+        }
+        @keyframes pulse { 0% { transform: scale(1); } 50% { transform: scale(1.05); } 100% { transform: scale(1); } }
+
+        /* --- 6. NEW: Certificate Section (3D Wall) --- */
+        .certificate-section { 
+            background: url('https://www.transparenttextures.com/patterns/cubes.png'), linear-gradient(to bottom, #f0f8ff, #ffffff);
+            padding: 80px 5%; text-align: center; overflow: hidden;
+        }
+        
+        /* 3D Container for Certificates */
+        .cert-container {
+            perspective: 1000px;
+            display: flex; justify-content: center; align-items: center;
+            margin-top: 40px;
+        }
+
+        .cert-track {
+            display: flex; gap: 40px;
+            animation: scrollCert 15s linear infinite alternate;
+            transform-style: preserve-3d;
+        }
+
+        @keyframes scrollCert { 0% { transform: translateX(10%) rotateY(5deg); } 100% { transform: translateX(-10%) rotateY(-5deg); } }
+
+        .cert-frame {
+            width: 300px; height: 220px;
+            background: white;
+            border: 8px solid var(--gold); /* Gold Border */
+            border-radius: 10px;
+            box-shadow: 
+                0 0 0 2px #5c4013, /* Inner dark gold */
+                0 20px 50px rgba(0,0,0,0.3); /* Drop Shadow */
+            position: relative;
+            transform: rotateX(5deg); /* Slight 3D tilt */
+            transition: transform 0.5s;
+            display: flex; justify-content: center; align-items: center;
+            overflow: hidden;
+        }
+
+        .cert-frame:hover { transform: rotateX(0deg) scale(1.1) translateZ(20px); z-index: 10; cursor: pointer; }
+        
+        .cert-img { width: 100%; height: 100%; object-fit: cover; }
+        
+        .cert-badge {
+            position: absolute; bottom: -15px; width: 50px; height: 50px;
+            background: var(--gold); border-radius: 50%;
+            display: flex; justify-content: center; align-items: center;
+            color: white; font-weight: bold; box-shadow: 0 5px 10px rgba(0,0,0,0.3);
+            border: 2px solid white;
+        }
+
+        /* --- 7. Gallery (Auto Scroll) --- */
+        .gallery-container { overflow: hidden; padding: 20px 0; }
+        .gallery-track { display: flex; gap: 20px; width: calc(280px * 12); animation: scrollGallery 30s linear infinite; }
+        @keyframes scrollGallery { 0% { transform: translateX(0); } 100% { transform: translateX(calc(-280px * 6)); } }
+        .gallery-img { 
+            width: 280px; height: 350px; object-fit: cover; border-radius: 15px; 
+            border: 5px solid white; box-shadow: 0 10px 25px rgba(0,0,0,0.15); 
+        }
+
+        /* --- Buttons & Floating --- */
+        .btn { 
+            padding: 12px 30px; border-radius: 50px; text-decoration: none; font-weight: 700; border: none; cursor: pointer; display: inline-block; transition: 0.3s; 
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2); text-transform: uppercase; letter-spacing: 1px;
+        }
+        .btn-primary { background: linear-gradient(90deg, #007bff, #0056b3); color: white; }
+        .btn-primary:hover { transform: translateY(-3px); box-shadow: 0 10px 20px rgba(0,123,255,0.4); }
+        .btn-query { background: linear-gradient(90deg, #ff4757, #ff6b81); color: white; }
+        .btn-facebook { background: var(--facebook); color: white; }
+
+        .floating-btns { position: fixed; bottom: 25px; right: 20px; display: flex; flex-direction: column; gap: 15px; z-index: 9999; }
+        .float-icon { 
+            width: 60px; height: 60px; border-radius: 50%; display: flex; justify-content: center; align-items: center; 
+            color: white; font-size: 28px; text-decoration: none; 
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3); border: 2px solid white;
+        }
+        .bg-wa { background: var(--whatsapp); }
+        .bg-call { background: var(--primary); }
+
+        /* --- Toast & Modal --- */
+        .toast { position: fixed; bottom: 100px; left: -100%; background: linear-gradient(45deg, #ff4757, #ff6b81); color: white; padding: 15px 25px; border-radius: 0 50px 50px 0; box-shadow: 5px 5px 15px rgba(0,0,0,0.2); z-index: 9998; transition: left 0.5s ease; display: flex; align-items: center; gap: 10px; }
+        .toast.active { left: 0; }
+
+        .modal { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.85); backdrop-filter: blur(5px); display: none; justify-content: center; align-items: center; z-index: 10001; }
+        .modal-content { background: white; padding: 30px; border-radius: 20px; width: 90%; max-width: 500px; position: relative; animation: zoomIn 0.3s; }
+        @keyframes zoomIn { from {transform: scale(0.8); opacity: 0;} to {transform: scale(1); opacity: 1;} }
+        .close-btn { position: absolute; top: 15px; right: 20px; font-size: 25px; cursor: pointer; }
+
+        /* Mobile Responsive */
+        @media (max-width: 768px) {
+            .comparison-wrapper { grid-template-columns: 1fr; }
+            .section-padding { padding: 50px 5%; }
+            .cert-track { flex-direction: column; animation: none; transform: none; }
+            .cert-frame { margin-bottom: 20px; transform: none; width: 100%; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="toast" id="admissionToast">
+        <i class="fas fa-bullhorn fa-lg"></i>
+        <div>
+            <strong>ভর্তি চলছে! (Admission Open)</strong><br>
+            <small>Session 2026 Starting Soon</small>
+        </div>
+    </div>
+
+    <nav>
+        <div class="scrolling-wrapper">
+            <div class="scrolling-text">
+                TIKARKHANJI JAWAHARLAL NEHRU YOUTH COMPUTER TRAINING INSTITUTE &nbsp;&nbsp;★&nbsp;&nbsp; GOVERNMENT OF INDIA CERTIFIED &nbsp;&nbsp;★&nbsp;&nbsp; ADMISSION OPEN
+            </div>
+        </div>
+        <button onclick="openForm()" class="btn btn-query" style="padding: 8px 20px; font-size: 0.8rem;">Query</button>
+    </nav>
+
+    <div class="floating-btns">
+        <a href="https://wa.me/919635419644?text=Hello Sir, I am interested in admission." class="float-icon bg-wa" target="_blank">
+            <i class="fab fa-whatsapp"></i>
+        </a>
+        <a href="tel:9635419644" class="float-icon bg-call">
+            <i class="fas fa-phone-alt"></i>
+        </a>
+    </div>
+
+    <section class="slider-container">
+        <div class="slider" id="slider">
+            <div class="slide">
+                <img src="https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=format&fit=crop&w=800" alt="Lab">
+                <div class="slide-overlay">
+                    <h1>AI Based Training</h1>
+                    <p>আধুনিক ল্যাব ও ১০ বছরের অভিজ্ঞতা</p>
+                    <div><a href="tel:9635419644" class="btn btn-primary">Call Now</a></div>
+                </div>
+            </div>
+            <div class="slide">
+                <img src="https://images.unsplash.com/photo-1531482615713-2afd69097998?auto=format&fit=crop&w=800" alt="Students">
+                <div class="slide-overlay">
+                    <h1>Future Ready Skills</h1>
+                    <p>AI, Coding এবং ডিজাইন শিখুন</p>
+                </div>
+            </div>
+            <div class="slide">
+                <img src="https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&w=800" alt="Technology">
+                <div class="slide-overlay">
+                    <h1>Govt. Certified</h1>
+                    <p>সরকারি মান্যতা প্রাপ্ত সার্টিফিকেট</p>
+                </div>
+            </div>
+            <div class="slide">
+                <img src="https://images.unsplash.com/photo-1523240715639-99a2f05eb40e?auto=format&fit=crop&w=800" alt="Education">
+                <div class="slide-overlay">
+                    <h1>Best Guidance</h1>
+                    <p>স্টুডেন্ট ফ্রেন্ডলি পরিবেশ</p>
+                </div>
+            </div>
+            <div class="slide">
+                <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=800" alt="Success">
+                <div class="slide-overlay">
+                    <h1>Join Us Today</h1>
+                    <p>আপনার উজ্জ্বল ভবিষ্যতের জন্য</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section-padding">
+        <div class="section-title">
+            <h2 data-aos="fade-down">আমাদের বিশেষ কোর্সসমূহ</h2>
+            <p>কার্ডে ক্লিক করে বিস্তারিত জানুন</p>
+        </div>
+        <div class="course-grid">
+            <div class="course-card" onclick="showDetails('ai')" data-aos="flip-left">
+                <div class="popular-badge">POPULAR</div>
+                <i class="fas fa-robot"></i>
+                <h3>AI Diploma (1 Year)</h3>
+                <p>AI + Coding + Full Computer</p>
+            </div>
+            <div class="course-card" onclick="showDetails('basic')" data-aos="flip-left" data-aos-delay="100">
+                <i class="fas fa-laptop"></i>
+                <h3>Computer Basic</h3>
+                <p>নতুনদের জন্য সেরা ফাউন্ডেশন</p>
+            </div>
+            <div class="course-card" onclick="showDetails('web')" data-aos="flip-left" data-aos-delay="200">
+                <i class="fas fa-globe"></i>
+                <h3>Website Dev</h3>
+                <p>নিজের ওয়েবসাইট বানাও</p>
+            </div>
+            <div class="course-card" onclick="showDetails('tally')" data-aos="flip-left" data-aos-delay="300">
+                <i class="fas fa-calculator"></i>
+                <h3>Tally & Adv Excel</h3>
+                <p>Professional Accounting</p>
+            </div>
+            <div class="course-card" onclick="showDetails('graphics')" data-aos="flip-left" data-aos-delay="400">
+                <i class="fas fa-palette"></i>
+                <h3>Graphics Design</h3>
+                <p>ডিজাইন মাস্টার হোন</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="section-padding" style="background: white;">
+        <div class="section-title">
+            <h2 data-aos="fade-up">কেন আমরা সেরা?</h2>
+        </div>
+        
+        <div class="comparison-wrapper">
+            <div class="comp-card comp-us" data-aos="fade-right">
+                <h3 style="color:var(--dark-blue);"><i class="fas fa-check-circle"></i> আমাদের ইনস্টিটিউট</h3>
+                <ul class="comp-list">
+                    <li><i class="fas fa-check"></i> Computer + AI + Coding একসাথে</li>
+                    <li><i class="fas fa-check"></i> আধুনিক সিলেবাস ও ল্যাব</li>
+                    <li><i class="fas fa-check"></i> গার্জেনদের সঙ্গে নিয়মিত যোগাযোগ</li>
+                    <li><i class="fas fa-check"></i> প্রতি মাসে পুরস্কার</li>
+                    <li><i class="fas fa-check"></i> আজীবন ফ্রি প্র্যাকটিস</li>
+                    <li><i class="fas fa-check"></i> সরকারি স্বীকৃত সার্টিফিকেট</li>
+                </ul>
+            </div>
+            <div class="comp-card comp-others" data-aos="fade-left">
+                <h3 style="color:#666;"><i class="fas fa-times-circle"></i> সাধারণ সেন্টার</h3>
+                <ul class="comp-list">
+                    <li><i class="fas fa-times"></i> শুধুমাত্র বেসিক শেখায়</li>
+                    <li><i class="fas fa-times"></i> পুরোনো সিলেবাস</li>
+                    <li><i class="fas fa-times"></i> কোনো সাপোর্ট নেই</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="fee-section" data-aos="zoom-in">
+            <div class="fee-card fee-others" style="background:#f0f0f0">
+                <h4>অন্যান্য সেন্টারের ফি</h4>
+                <p style="font-size:1.5rem; margin:10px 0;">₹5500 – ₹7000</p>
+                <small>(নরমাল ডিপ্লোমা)</small>
+            </div>
+            <div class="fee-card fee-us">
+                <span style="color:var(--gold); font-weight:bold;">SPECIAL OFFER!</span>
+                <h4 style="margin-top:5px;">আমাদের AI ডিপ্লোমা ফি</h4>
+                <p style="text-decoration: line-through; opacity: 0.7;">₹8000</p>
+                <span class="price-final">₹4000 ONLY</span>
+            </div>
+        </div>
+    </section>
+
+    <section class="certificate-section">
+        <div class="section-title">
+            <h2 data-aos="fade-down" style="color:#2c3e50">আমাদের সার্টিফিকেট</h2>
+            <p>সরকারি মান্যতা প্রাপ্ত ভ্যালুয়েবল সার্টিফিকেট</p>
+        </div>
+        <div class="cert-container">
+            <div class="cert-track">
+                <div class="cert-frame">
+                    <img src="https://via.placeholder.com/300x220?text=Certificate+Sample+1" class="cert-img" alt="Certificate 1">
+                    <div class="cert-badge"><i class="fas fa-award"></i></div>
+                </div>
+                <div class="cert-frame">
+                    <img src="https://via.placeholder.com/300x220?text=Certificate+Sample+2" class="cert-img" alt="Certificate 2">
+                    <div class="cert-badge"><i class="fas fa-award"></i></div>
+                </div>
+                <div class="cert-frame">
+                    <img src="https://via.placeholder.com/300x220?text=Certificate+Sample+1" class="cert-img" alt="Certificate 1">
+                    <div class="cert-badge"><i class="fas fa-award"></i></div>
+                </div>
+            </div>
+        </div>
+        <p style="margin-top:20px; font-style:italic; font-size:0.9rem;">(ISO & Govt. of India Recognized)</p>
+    </section>
+
+    <section class="section-padding">
+        <div class="section-title">
+            <h2 style="color:var(--dark-blue)">সফল ছাত্র-ছাত্রী</h2>
+        </div>
+        <div class="gallery-container">
+            <div class="gallery-track">
+                <img src="https://images.unsplash.com/photo-1523240715639-99a2f05eb40e?w=300" class="gallery-img">
+                <img src="https://images.unsplash.com/photo-1491438590914-bc09fcaaf77a?w=300" class="gallery-img">
+                <img src="https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?w=300" class="gallery-img">
+                <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=300" class="gallery-img">
+                <img src="https://images.unsplash.com/photo-1543269664-56d93c1b41a6?w=300" class="gallery-img">
+                <img src="https://images.unsplash.com/photo-1523240715639-99a2f05eb40e?w=300" class="gallery-img">
+            </div>
+        </div>
+    </section>
+
+    <section style="background:white; padding:50px 5%; text-align:center; border-top:5px solid var(--primary);">
+        <i class="fas fa-map-marked-alt" style="font-size:3rem; color:var(--primary);"></i>
+        <h3 style="margin:20px 0;">আমাদের লোকেশন</h3>
+        <p style="font-size:1.1rem;">টিকারখানজি বাস স্ট্যান্ড, কাটোয়া (সেমফোর্ড স্কুলের সামনে)</p>
+        <div style="margin-top:30px; display:flex; gap:15px; justify-content:center; flex-wrap:wrap;">
+            <a href="https://www.google.com/search?q=tikarkhanji+jawaharlal+nehru+yuva+computer+training+institute" target="_blank" class="btn btn-primary">
+                <i class="fas fa-directions"></i> Google Map
+            </a>
+            <a href="https://www.facebook.com/" target="_blank" class="btn btn-facebook">
+                <i class="fab fa-facebook-f"></i> Facebook
+            </a>
+        </div>
+    </section>
+
+    <footer>
+        <p style="font-size:0.9rem;">© 2026 TIKARKHANJI JAWAHARLAL NEHRU YOUTH COMPUTER TRAINING INSTITUTE</p>
+    </footer>
+
+    <div class="modal" id="detailsModal">
+        <div class="modal-content">
+            <span class="close-btn" onclick="closeDetails()">×</span>
+            <div id="modalBody"></div>
+            <button onclick="openForm()" class="btn btn-query" style="width:100%; margin-top:20px; justify-content:center;">Apply Now</button>
+        </div>
+    </div>
+
+    <div class="modal" id="formModal">
+        <div class="modal-content">
+            <span class="close-btn" onclick="closeForm()">×</span>
+            <h3 style="text-align:center; color:var(--primary);">Admission Form</h3><br>
+            <form id="inquiryForm" style="display:flex; flex-direction:column; gap:15px;">
+                <input type="text" placeholder="Name" required style="padding:12px; border:1px solid #ddd; border-radius:8px;">
+                <input type="tel" placeholder="Mobile" required style="padding:12px; border:1px solid #ddd; border-radius:8px;">
+                <textarea placeholder="Address" rows="3" style="padding:12px; border:1px solid #ddd; border-radius:8px;"></textarea>
+                <button type="submit" class="btn btn-primary" style="justify-content:center;">Submit</button>
+            </form>
+            <div id="successMsg" style="display:none; text-align:center; color:var(--whatsapp); margin-top:15px; font-weight:bold;">Successfully Submitted!</div>
+        </div>
+    </div>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init({ disable: 'mobile' }); // Mobile optimization
+
+        // Toast
+        setInterval(() => {
+            const t = document.getElementById('admissionToast');
+            t.classList.add('active');
+            setTimeout(() => t.classList.remove('active'), 5000);
+        }, 12000);
+
+        // Course Data
+        const courses = {
+            ai: {
+                title: "🔥 AI Diploma Course",
+                list: ["Computer Fundamentals", "MS Office (Advanced)", "Internet & Email", "Artificial Intelligence Tools", "Coding (HTML/CSS)", "Tally & Accounting"]
+            },
+            basic: { title: "💻 Computer Basic", list: ["Typing", "Notepad/Paint", "MS Word, Excel, PPT", "Internet Surfing"] },
+            web: { title: "🌐 Website Dev", list: ["HTML5 & CSS3", "JavaScript Basic", "Responsive Design", "Hosting Knowledge"] },
+            tally: { title: "📊 Tally & Excel", list: ["Accounting Rules", "Tally Prime with GST", "Advanced Excel Formula", "Payroll"] },
+            graphics: { title: "🎨 Graphics Design", list: ["Photoshop", "Logo Designing", "Banner Creation", "AI Design Tools"] }
+        };
+
+        function showDetails(k) {
+            document.getElementById('modalBody').innerHTML = `<h2 style="color:var(--primary)">${courses[k].title}</h2><ul class="syllabus-list">${courses[k].list.map(i=>`<li>${i}</li>`).join('')}</ul>`;
+            document.getElementById('detailsModal').style.display = 'flex';
+        }
+        function closeDetails() { document.getElementById('detailsModal').style.display = 'none'; }
+        function openForm() { document.getElementById('formModal').style.display = 'flex'; }
+        function closeForm() { document.getElementById('formModal').style.display = 'none'; }
+
+        document.getElementById('inquiryForm').onsubmit = function(e){
+            e.preventDefault();
+            this.style.display='none';
+            document.getElementById('successMsg').style.display='block';
+            setTimeout(closeForm, 2500);
+        }
+
+        // Hero Slider Logic (5 Images)
+        let sIdx = 0;
+        setInterval(() => {
+            sIdx = (sIdx + 1) % 5;
+            document.getElementById('slider').style.transform = `translateX(-${sIdx * 20}%)`; // 100/5 = 20% shift per slide
+        }, 4000);
+    </script>
+</body>
+</html>
