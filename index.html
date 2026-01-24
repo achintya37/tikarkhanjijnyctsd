@@ -1,72 +1,62 @@
- <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>TIKARKHANJI JAWAHARLAL NEHRU YOUTH COMPUTER TRAINING INSTITUTE</title>
     
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 
     <style>
         :root {
-            /* 3D Professional Palette */
             --primary: #007bff;
             --dark-blue: #004494;
-            --sky-gradient: linear-gradient(135deg, #e0f2ff 0%, #f0f8ff 100%);
-            --card-gradient: linear-gradient(145deg, #ffffff, #e6e6e6);
-            --gold: #d4af37;
-            --white: #ffffff;
-            --accent: #ff4757;
-            --whatsapp: #25d366;
+            /* Premium Gradient Background */
+            --colorful-gradient: linear-gradient(135deg, #81D4FA 0%, #FFF59D 50%, #F48FB1 100%);
+            --card-gradient: linear-gradient(145deg, #ffffff, #f0f0f0);
+            --gold: #FFD700;
             --text-dark: #2c3e50;
-            --shadow-3d: 10px 10px 20px #bebebe, -10px -10px 20px #ffffff;
-            --shadow-mobile: 5px 5px 15px rgba(0,0,0,0.1);
+            --shadow-3d: 8px 8px 16px rgba(0,0,0,0.1), -8px -8px 16px rgba(255,255,255,0.8);
         }
 
-        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Poppins', sans-serif; scroll-behavior: smooth; }
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Poppins', 'Hind Siliguri', sans-serif; scroll-behavior: smooth; }
         
         body { 
-            background: var(--sky-gradient);
+            background: var(--colorful-gradient);
+            background-attachment: fixed; /* Keeps gradient fixed while scrolling */
             color: var(--text-dark); 
             overflow-x: hidden; 
         }
 
-        /* --- 1. Scrolling Header --- */
+        /* --- 1. Navbar --- */
         nav {
             display: flex; justify-content: space-between; align-items: center;
             padding: 0 5%; position: fixed; width: 100%; top: 0;
-            background: rgba(255, 255, 255, 0.98); 
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-            z-index: 1000; height: 60px;
+            background: rgba(255, 255, 255, 0.95); 
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            z-index: 1000; height: 60px; backdrop-filter: blur(5px);
         }
-
         .scrolling-wrapper { flex: 1; overflow: hidden; white-space: nowrap; margin-right: 15px; mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent); }
-
         .scrolling-text {
-            display: inline-block; font-weight: 700; font-size: 0.95rem; color: var(--primary);
+            display: inline-block; font-weight: 700; font-size: 0.9rem; color: var(--primary);
             text-transform: uppercase; animation: scrollText 20s linear infinite;
         }
         @keyframes scrollText { 0% { transform: translateX(100%); } 100% { transform: translateX(-100%); } }
 
-        /* --- 2. Hero Slider --- */
+        /* --- 2. Hero Slider (Original 5 Images) --- */
         .slider-container { 
-            position: relative; width: 100%; height: 65vh; overflow: hidden; margin-top: 60px; 
+            position: relative; width: 100%; height: 60vh; overflow: hidden; margin-top: 60px; 
             box-shadow: 0 10px 30px rgba(0,0,0,0.2);
         }
-        /* Mobile specific height adjustment */
-        @media (max-width: 768px) {
-            .slider-container { height: 50vh; } 
-        }
+        /* Mobile height adjustment */
+        @media (max-width: 768px) { .slider-container { height: 50vh; } }
 
-        .slider { 
-            display: flex; width: 500%; 
-            height: 100%; transition: transform 0.8s cubic-bezier(0.25, 1, 0.5, 1); 
-        }
+        .slider { display: flex; width: 500%; height: 100%; transition: transform 0.8s cubic-bezier(0.25, 1, 0.5, 1); }
         .slide { width: 100%; height: 100%; position: relative; }
         .slide img { width: 100%; height: 100%; object-fit: cover; }
-        
         .slide-overlay {
             position: absolute; top: 0; left: 0; width: 100%; height: 100%;
             background: linear-gradient(to right, rgba(0,0,0,0.7) 30%, transparent 100%);
@@ -78,15 +68,113 @@
         }
         .slide-overlay p { color: #f1f1f1; font-size: clamp(1rem, 2.5vw, 1.2rem); margin-bottom: 25px; }
 
-        /* --- 3. Course Grid --- */
-        .section-padding { padding: 70px 5%; }
-        .section-title { text-align: center; margin-bottom: 50px; }
+        /* --- 3. Gallery (Success Students - All Images Restored) --- */
+        .gallery-wrapper {
+            background: rgba(255, 255, 255, 0.6); 
+            backdrop-filter: blur(5px); padding-bottom: 20px;
+        }
+        .gallery-container { overflow: hidden; padding: 20px 0; position: relative; }
+        .gallery-container::before, .gallery-container::after {
+            content: ""; position: absolute; top: 0; width: 60px; height: 100%; z-index: 2; pointer-events: none;
+        }
+        .gallery-container::before { left: 0; background: linear-gradient(to right, rgba(255,255,255,0.9), transparent); }
+        .gallery-container::after { right: 0; background: linear-gradient(to left, rgba(255,255,255,0.9), transparent); }
+
+        .gallery-track { display: flex; gap: 15px; width: max-content; animation: scrollGallery 60s linear infinite; }
+        .gallery-track:hover { animation-play-state: paused; } /* Pause on touch/hover */
+        
+        @keyframes scrollGallery { 0% { transform: translateX(0); } 100% { transform: translateX(calc(-100% + 100vw)); } }
+        
+        .gallery-img { 
+            width: 240px; height: 320px; object-fit: cover; border-radius: 15px; 
+            border: 4px solid white; box-shadow: 0 8px 20px rgba(0,0,0,0.15); 
+        }
+        /* Mobile size adjustment for gallery images */
+        @media (max-width: 768px) {
+            .gallery-img { width: 180px; height: 240px; }
+        }
+
+        /* --- 4. 3D HIGHLIGHT TEXT (NO CLICK, CONTINUOUS ANIMATION) --- */
+        .highlight-container {
+            text-align: center;
+            padding: 40px 10px 10px 10px;
+            background: transparent;
+            perspective: 1000px; /* Essential for 3D */
+            overflow: visible;
+        }
+
+        .highlight-3d-text {
+            display: block;
+            font-size: 2rem; /* Mobile optimized base size */
+            font-weight: 900;
+            line-height: 1.3;
+            text-align: center;
+            
+            /* Continuous Rainbow Gradient */
+            background: linear-gradient(90deg, #ff0000, #ff7f00, #ffd700, #008000, #0000ff, #4b0082, #9400d3, #ff0000);
+            background-size: 400% 100%;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            
+            /* Animations */
+            animation: 
+                gradientShift 4s linear infinite, 
+                float3D 4s ease-in-out infinite;
+            
+            /* 3D Drop Shadow (Since text is transparent, we use filter) */
+            filter: drop-shadow(0px 5px 5px rgba(0,0,0,0.3));
+        }
+
+        @media (min-width: 768px) {
+            .highlight-3d-text { font-size: 3.5rem; } /* Larger on desktop */
+        }
+
+        @keyframes gradientShift {
+            0% { background-position: 0% 50%; }
+            100% { background-position: 100% 50%; }
+        }
+
+        @keyframes float3D {
+            0%, 100% { transform: translateY(0) rotateX(0deg) rotateY(0deg) scale(1); }
+            25% { transform: translateY(-10px) rotateX(5deg) rotateY(2deg) scale(1.02); }
+            50% { transform: translateY(0) rotateX(0deg) rotateY(0deg) scale(1); }
+            75% { transform: translateY(5px) rotateX(-5deg) rotateY(-2deg) scale(0.98); }
+        }
+
+        /* --- 5. Counter Section --- */
+        .counter-section {
+            background: rgba(255, 255, 255, 0.9);
+            margin: 10px 20px 40px 20px;
+            padding: 30px 20px;
+            border-radius: 20px;
+            text-align: center;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+            border-bottom: 5px solid var(--gold);
+        }
+        .counter-box { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 5px; }
+        .counter-icon { font-size: 3rem; color: var(--primary); margin-bottom: 10px; animation: bounce 2s infinite; }
+        @keyframes bounce { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
+        
+        .counter-number {
+            font-size: 3.5rem; font-weight: 800; 
+            background: linear-gradient(to right, #007bff, #004494);
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+        }
+        .counter-text { font-size: 1.1rem; font-weight: 600; color: #555; }
+
+        /* --- 6. Course Grid (3D Cards) --- */
+        .section-padding { padding: 60px 5%; }
+        .section-title { text-align: center; margin-bottom: 40px; }
         .section-title h2 { 
-            color: var(--primary); font-size: 2.2rem; font-weight: 800; 
-            text-transform: uppercase; text-shadow: 2px 2px 5px rgba(0,0,0,0.1);
+            color: var(--dark-blue); font-size: 2rem; font-weight: 800; 
+            text-transform: uppercase; text-shadow: 2px 2px 0px rgba(255,255,255,0.5);
         }
         
-        .course-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px; }
+        .course-grid { 
+            display: grid; 
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); 
+            gap: 30px; 
+        }
 
         .course-card { 
             background: var(--card-gradient); padding: 40px 20px; border-radius: 20px; 
@@ -94,7 +182,6 @@
             box-shadow: var(--shadow-3d); transition: all 0.4s ease;
             transform-style: preserve-3d; perspective: 1000px;
         }
-        
         .course-card:hover { transform: translateY(-10px); }
         .course-card i { font-size: 3.5rem; color: var(--primary); margin-bottom: 20px; }
         .popular-badge { 
@@ -103,114 +190,36 @@
             box-shadow: 0 5px 10px rgba(0,0,0,0.2);
         }
 
-        /* --- 4. Comparison --- */
+        /* --- 7. Comparison & Fee --- */
         .comparison-wrapper { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; margin-top: 30px; }
-        .comp-card { 
-            padding: 30px; border-radius: 20px; 
-            box-shadow: var(--shadow-3d); transition: 0.3s;
-        }
-        .comp-us { background: linear-gradient(145deg, #e3f2fd, #ffffff); border-left: 5px solid var(--primary); }
-        .comp-others { background: #f9f9f9; opacity: 0.9; }
-        
+        .comp-card { padding: 30px; border-radius: 20px; box-shadow: var(--shadow-3d); background: rgba(255,255,255,0.9); }
+        .comp-us { border-left: 5px solid var(--primary); }
         .comp-list { list-style: none; margin-top: 15px; }
         .comp-list li { margin-bottom: 12px; display: flex; gap: 10px; align-items: center; font-weight: 500; font-size: 0.95rem; }
-        .comp-us li i { color: var(--whatsapp); font-size: 1.2rem; }
-        .comp-others li i { color: var(--accent); }
+        .comp-us li i { color: #25d366; font-size: 1.2rem; }
+        .comp-others li i { color: #ff4757; }
 
-        /* --- 5. Fee Card --- */
         .fee-section { margin-top: 50px; display: flex; justify-content: center; gap: 30px; flex-wrap: wrap; }
-        .fee-card { 
-            flex: 1; min-width: 280px; padding: 30px; text-align: center; border-radius: 20px; 
-            box-shadow: var(--shadow-3d);
-        }
-        .fee-us { 
-            background: linear-gradient(135deg, #0056b3, #004494); color: white; 
-            transform: scale(1.05); border: 2px solid white;
-        }
-        .price-final { 
-            font-size: 2.5rem; font-weight: 800; color: #ffb700; display: block; margin-top: 10px; 
-            animation: pulse 1.5s infinite; 
-        }
+        .fee-card { flex: 1; min-width: 280px; padding: 30px; text-align: center; border-radius: 20px; box-shadow: var(--shadow-3d); }
+        .fee-us { background: linear-gradient(135deg, #0056b3, #004494); color: white; transform: scale(1.05); border: 2px solid white; }
+        .price-final { font-size: 2.5rem; font-weight: 800; color: #ffb700; display: block; margin-top: 10px; animation: pulse 1.5s infinite; }
         @keyframes pulse { 0% { transform: scale(1); } 50% { transform: scale(1.05); } 100% { transform: scale(1); } }
 
-        /* --- 6. Certificate Section --- */
+        /* --- 8. Certificates --- */
         .certificate-section { 
-            background: url('https://www.transparenttextures.com/patterns/cubes.png'), linear-gradient(to bottom, #f0f8ff, #ffffff);
-            padding: 80px 5%; text-align: center; overflow: hidden;
+            background: rgba(255,255,255,0.7); padding: 60px 5%; text-align: center; overflow: hidden;
+            margin-top: 50px; border-radius: 30px 30px 0 0;
         }
-        
-        .cert-container {
-            perspective: 1000px;
-            display: flex; justify-content: center; align-items: center;
-            margin-top: 40px;
+        .cert-container { 
+            display: flex; gap: 30px; justify-content: center; align-items: center; 
+            margin-top: 40px; overflow-x: auto; padding-bottom: 20px;
         }
-
-        .cert-track {
-            display: flex; gap: 40px;
-            transform-style: preserve-3d;
-        }
-        
-        /* Desktop Animation */
-        @media (min-width: 769px) {
-            .cert-track { animation: scrollCert 15s linear infinite alternate; }
-        }
-        @keyframes scrollCert { 0% { transform: translateX(10%) rotateY(5deg); } 100% { transform: translateX(-10%) rotateY(-5deg); } }
-
         .cert-frame {
-            width: 300px; height: 420px;
-            background: white;
-            border: 8px solid var(--gold);
-            border-radius: 10px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
-            position: relative;
-            transform: rotateX(5deg);
-            transition: transform 0.5s;
+            min-width: 280px; height: 380px; background: white; border: 8px solid var(--gold); border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2); position: relative;
             display: flex; justify-content: center; align-items: center; overflow: hidden;
-            flex-shrink: 0;
         }
-
-        .cert-frame:hover { transform: rotateX(0deg) scale(1.05) translateZ(20px); z-index: 10; cursor: pointer; }
         .cert-img { width: 100%; height: 100%; object-fit: cover; }
-        .cert-badge {
-            position: absolute; bottom: -15px; width: 50px; height: 50px;
-            background: var(--gold); border-radius: 50%;
-            display: flex; justify-content: center; align-items: center;
-            color: white; font-weight: bold; box-shadow: 0 5px 10px rgba(0,0,0,0.3); border: 2px solid white;
-        }
-
-        /* --- 7. Gallery (Improved & Slower) --- */
-        .gallery-container { 
-            overflow: hidden; padding: 40px 0; position: relative;
-            background: linear-gradient(to bottom, #fff, #f4faff);
-        }
-        
-        /* Gradient Masks for smooth fade effect */
-        .gallery-container::before, .gallery-container::after {
-            content: ""; position: absolute; top: 0; width: 100px; height: 100%; z-index: 2;
-            pointer-events: none;
-        }
-        .gallery-container::before { left: 0; background: linear-gradient(to right, white, transparent); }
-        .gallery-container::after { right: 0; background: linear-gradient(to left, white, transparent); }
-
-        .gallery-track { 
-            display: flex; gap: 20px; 
-            width: max-content; /* Auto width based on content */
-            animation: scrollGallery 80s linear infinite; /* Increased time significantly */
-        }
-        
-        .gallery-track:hover { animation-play-state: paused; cursor: grab; }
-
-        @keyframes scrollGallery { 
-            0% { transform: translateX(0); } 
-            100% { transform: translateX(calc(-100% + 100vw)); } /* Scroll entire length */
-        }
-        
-        .gallery-img { 
-            width: 280px; height: 350px; object-fit: cover; border-radius: 15px; 
-            border: 4px solid white; box-shadow: 0 8px 20px rgba(0,0,0,0.1); 
-            transition: transform 0.3s ease;
-        }
-        .gallery-img:hover { transform: scale(1.05); border-color: var(--primary); }
 
         /* --- UI Elements --- */
         .btn { 
@@ -227,65 +236,36 @@
             color: white; font-size: 24px; text-decoration: none; 
             box-shadow: 0 5px 15px rgba(0,0,0,0.3); border: 2px solid white;
         }
-        .bg-wa { background: var(--whatsapp); }
+        .bg-wa { background: #25d366; }
         .bg-call { background: var(--primary); }
 
-        /* --- Modal & Toast --- */
-        .toast { position: fixed; bottom: 100px; left: -100%; background: linear-gradient(45deg, #ff4757, #ff6b81); color: white; padding: 15px 25px; border-radius: 0 50px 50px 0; box-shadow: 5px 5px 15px rgba(0,0,0,0.2); z-index: 9998; transition: left 0.5s ease; display: flex; align-items: center; gap: 10px; max-width: 80%; }
-        .toast.active { left: 0; }
-
+        /* --- Modals & Toast --- */
         .modal { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.85); backdrop-filter: blur(5px); display: none; justify-content: center; align-items: center; z-index: 10001; padding: 20px; }
         .modal-content { background: white; padding: 30px; border-radius: 20px; width: 100%; max-width: 450px; position: relative; animation: zoomIn 0.3s; max-height: 90vh; overflow-y: auto; }
         @keyframes zoomIn { from {transform: scale(0.8); opacity: 0;} to {transform: scale(1); opacity: 1;} }
         .close-btn { position: absolute; top: 15px; right: 20px; font-size: 25px; cursor: pointer; color: #555; }
         .syllabus-list { text-align: left; margin-top: 15px; padding-left: 20px; line-height: 1.8; }
+        
+        .toast { position: fixed; bottom: 100px; left: -100%; background: linear-gradient(45deg, #ff4757, #ff6b81); color: white; padding: 15px 25px; border-radius: 0 50px 50px 0; box-shadow: 5px 5px 15px rgba(0,0,0,0.2); z-index: 9998; transition: left 0.5s ease; display: flex; align-items: center; gap: 10px; max-width: 80%; }
+        .toast.active { left: 0; }
 
-        /* --- MOBILE OPTIMIZATION (Essential) --- */
+        /* --- Mobile Optimization Specifics --- */
         @media (max-width: 768px) {
-            /* General */
             .section-padding { padding: 40px 5%; }
-            .section-title h2 { font-size: 1.8rem; margin-bottom: 10px; }
-            
-            /* Navbar */
-            nav { padding: 0 3%; }
-            .scrolling-text { font-size: 0.8rem; }
-            
-            /* Hero Slider */
-            .slider-container { margin-top: 60px; height: 45vh; }
-            .slide-overlay { padding-left: 5%; background: linear-gradient(to right, rgba(0,0,0,0.6) 50%, transparent 100%); }
-            .slide-overlay h1 { font-size: 1.8rem; text-shadow: 1px 1px 0px var(--primary); }
-            .slide-overlay p { font-size: 0.9rem; margin-bottom: 15px; }
-            .btn { padding: 10px 20px; font-size: 0.85rem; }
-
-            /* Comparison */
-            .comparison-wrapper { grid-template-columns: 1fr; gap: 20px; }
-            
-            /* Fee Section */
+            .section-title h2 { font-size: 1.8rem; margin-bottom: 15px; }
+            .comparison-wrapper { grid-template-columns: 1fr; }
             .fee-section { gap: 20px; }
-            .fee-us { transform: scale(1); } /* Remove scale on mobile to prevent overflow */
-            .price-final { font-size: 2rem; }
-
-            /* Certificate Scroll Snap on Mobile */
-            .cert-container { overflow-x: auto; justify-content: flex-start; padding-bottom: 20px; }
-            .cert-track { 
-                animation: none; transform: none; 
-                padding: 10px 20px; width: 100%; overflow-x: auto; 
-                display: flex; gap: 20px; 
-                scroll-snap-type: x mandatory; 
-            }
-            .cert-frame { 
-                width: 260px; height: 360px; transform: none; 
-                scroll-snap-align: center; margin: 0 auto; 
-            }
-            .cert-frame:hover { transform: scale(1.02); }
-
-            /* Gallery Mobile */
-            .gallery-img { width: 200px; height: 260px; } /* Smaller images for mobile */
-            .gallery-container::before, .gallery-container::after { width: 30px; } /* Smaller fade area */
+            .fee-us { transform: scale(1); }
+            .cert-container { justify-content: flex-start; } /* Allow horizontal scroll */
+            .cert-frame { min-width: 250px; height: 350px; }
+            
+            /* Ensure animations aren't too jarring on mobile */
+            .course-card:hover { transform: none; }
         }
     </style>
-    </head>
+</head>
 <body>
+
     <div class="toast" id="admissionToast">
         <i class="fas fa-bullhorn fa-lg"></i>
         <div>
@@ -300,16 +280,12 @@
                 TIKARKHANJI JAWAHARLAL NEHRU YOUTH COMPUTER TRAINING INSTITUTE &nbsp;&nbsp;★&nbsp;&nbsp; GOVERNMENT OF INDIA CERTIFIED &nbsp;&nbsp;★&nbsp;&nbsp; ADMISSION OPEN
             </div>
         </div>
-        <button onclick="openForm()" class="btn btn-query" style="padding: 6px 15px; font-size: 0.75rem; white-space: nowrap;">Query</button>
+        <button onclick="openForm()" class="btn btn-query" style="padding: 6px 15px; font-size: 0.75rem;">Query</button>
     </nav>
 
     <div class="floating-btns">
-        <a href="https://wa.me/919635419644?text=Hello Sir, I am interested in admission." class="float-icon bg-wa" target="_blank">
-            <i class="fab fa-whatsapp"></i>
-        </a>
-        <a href="tel:9635419644" class="float-icon bg-call">
-            <i class="fas fa-phone-alt"></i>
-        </a>
+        <a href="https://wa.me/919635419644?text=Hello Sir, I am interested in admission." class="float-icon bg-wa" target="_blank"><i class="fab fa-whatsapp"></i></a>
+        <a href="tel:9635419644" class="float-icon bg-call"><i class="fas fa-phone-alt"></i></a>
     </div>
 
     <section class="slider-container">
@@ -353,116 +329,10 @@
         </div>
     </section>
 
-    <section class="section-padding">
+    <section class="section-padding gallery-wrapper">
         <div class="section-title">
-            <h2 data-aos="fade-down">আমাদের বিশেষ কোর্সসমূহ</h2>
-            <p style="font-size: 0.9rem; color: #666;">কার্ডে ক্লিক করে বিস্তারিত জানুন</p>
-        </div>
-        <div class="course-grid">
-            <div class="course-card" onclick="showDetails('ai')" data-aos="fade-up">
-                <div class="popular-badge">POPULAR</div>
-                <i class="fas fa-robot"></i>
-                <h3>AI Diploma (1 Year)</h3>
-                <p>AI + Coding + Full Computer</p>
-            </div>
-            <div class="course-card" onclick="showDetails('basic')" data-aos="fade-up" data-aos-delay="100">
-                <i class="fas fa-laptop"></i>
-                <h3>Computer Basic, DIPLOMA</h3>
-                <p>নতুনদের জন্য সেরা ফাউন্ডেশন</p>
-            </div>
-            <div class="course-card" onclick="showDetails('web')" data-aos="fade-up" data-aos-delay="200">
-                <i class="fas fa-globe"></i>
-                <h3>Website Development</h3>
-                <p>নিজের ওয়েবসাইট বানাও</p>
-            </div>
-            <div class="course-card" onclick="showDetails('tally')" data-aos="fade-up" data-aos-delay="300">
-                <i class="fas fa-calculator"></i>
-                <h3>Tally & Adv Excel</h3>
-                <p>Professional Accounting</p>
-            </div>
-            <div class="course-card" onclick="showDetails('graphics')" data-aos="fade-up" data-aos-delay="400">
-                <i class="fas fa-palette"></i>
-                <h3>Graphics Designing</h3>
-                <p>ডিজাইন মাস্টার হোন</p>
-            </div>
-        </div>
-    </section>
-
-    <section class="section-padding" style="background: white;">
-        <div class="section-title">
-            <h2 data-aos="fade-up">কেন আমরা সেরা?</h2>
-        </div>
-        
-        <div class="comparison-wrapper">
-            <div class="comp-card comp-us" data-aos="fade-right">
-                <h3 style="color:var(--dark-blue); font-size:1.4rem;"><i class="fas fa-check-circle"></i> আমাদের ইনস্টিটিউট</h3>
-                <ul class="comp-list">
-                    <li><i class="fas fa-check"></i> Computer + AI + Coding একসাথে</li>
-                 <li><i class="fas fa-check"></i> পাঁচ বছর পুরন উপলক্ষে AI কোর্সের উপর 50% Discount</li>
-                    <li><i class="fas fa-check"></i> আধুনিক সিলেবাস,Ac ল্যাব, ফ্রি হাইস্পিড WiFi,</li>
-                 <li><i class="fas fa-check"></i> ১০০% মানিব্যাগ পলিসি</li>
-                    <li><i class="fas fa-check"></i> গার্জেনদের সঙ্গে নিয়মিত যোগাযোগ</li>
-                 <li><i class="fas fa-check"></i> সাত বছরের অভিজ্ঞ,ধৈর্যশীল শিক্ষক</li>
-                    <li><i class="fas fa-check"></i> প্রতি মাসে বেস্ট স্টুডেন্ট অফ দ্য মান্থ পুরস্কার</li>
-                    <li><i class="fas fa-check"></i> আজীবন ফ্রি প্র্যাকটিস</li>
-                    <li><i class="fas fa-check"></i> কোর্স শেষে সরকারি সার্টিফিকেট</li>
-                </ul>
-            </div>
-            <div class="comp-card comp-others" data-aos="fade-left">
-                <h3 style="color:#666; font-size:1.4rem;"><i class="fas fa-times-circle"></i> সাধারণ সেন্টার</h3>
-                <ul class="comp-list">
-                    <li><i class="fas fa-times"></i> শুধুমাত্র বেসিক এবং ডিপ্লোমা শেখায় যা আজকের দিনে অপ্রয়োজনীয়</li>
-                    <li><i class="fas fa-times"></i> পুরোনো সিলেবাস</li>
-                    <li><i class="fas fa-times"></i> কোর্স শেষে,কোনো সাপোর্ট নেই</li>
-                 <li><i class="fas fa-check"></i> সার্টিফিকেটের গ্রহণযোগ্যতা কম</li>
-                 <li><i class="fas fa-check"></i>কোর্স ফি অনেক বেশি </li>
-                </ul>
-            </div>
-        </div>
-
-        <div class="fee-section" data-aos="zoom-in">
-            <div class="fee-card fee-others" style="background:#f8f9fa; border: 1px solid #ddd;">
-                <h4>অন্যান্য সেন্টারের ফি</h4>
-                <p style="font-size:1.5rem; margin:10px 0; color: #555;">₹5500 – ₹7000</p>
-                <small>(নরমাল ডিপ্লোমা)</small>
-            </div>
-            <div class="fee-card fee-us">
-                <span style="color:var(--gold); font-weight:bold; letter-spacing:1px; background:rgba(0,0,0,0.2); padding:2px 10px; border-radius:4px;">SPECIAL OFFER!</span>
-                <h4 style="margin-top:10px;">আমাদের AI ডিপ্লোমা ফি</h4>
-                <p style="text-decoration: line-through; opacity: 0.7;">₹8000</p>
-                <span class="price-final">50% ডিসকাউন্ট -₹4000 ONLY</span>
-            </div>
-        </div>
-    </section>
-
-    <section class="certificate-section">
-        <div class="section-title">
-            <h2 data-aos="fade-down" style="color:#2c3e50">আমাদের সার্টিফিকেট</h2>
-            <p style="font-size:0.9rem;">সরকারি মান্যতা প্রাপ্ত ভ্যালুয়েবল সার্টিফিকেট</p>
-        </div>
-        <div class="cert-container">
-            <div class="cert-track">
-                <div class="cert-frame">
-                    <img src="https://i.postimg.cc/T2CRVdst/IMG_20260123_WA0020.jpg" class="cert-img" alt="2nd Rank in WB">
-                    <div class="cert-badge"><i class="fas fa-award"></i></div>
-                </div>
-                <div class="cert-frame">
-                    <img src="https://i.postimg.cc/fWBwczPf/IMG_20260123_WA0023.jpg" class="cert-img" alt="Certificate">
-                    <div class="cert-badge"><i class="fas fa-award"></i></div>
-                </div>
-                <div class="cert-frame">
-                    <img src="https://i.postimg.cc/59nxB4r3/IMG_20260123_WA0024.jpg" class="cert-img" alt="Marksheet">
-                    <div class="cert-badge"><i class="fas fa-award"></i></div>
-                </div>
-            </div>
-        </div>
-        <p style="margin-top:20px; font-style:italic; font-size:0.8rem; color:#555;">(ISO & Govt. of India Recognized)</p>
-    </section>
-
-    <section class="section-padding">
-        <div class="section-title">
-            <h2 style="color:var(--dark-blue)">সফল ছাত্র-ছাত্রী</h2>
-            <p style="font-size:0.85rem; color:#555;">(ছবিতে টাচ করে থামিয়ে দেখুন)</p>
+            <h2 style="color:var(--dark-blue); font-size: 2rem;">আমাদের সফল ছাত্র-ছাত্রী</h2>
+            <p style="font-size:0.9rem; color:#555;">(ছবিতে টাচ করে থামিয়ে দেখুন)</p>
         </div>
         <div class="gallery-container">
             <div class="gallery-track">
@@ -491,6 +361,120 @@
                 <img src="https://i.postimg.cc/50QXN1CQ/IMG_20260123_WA0067.jpg" class="gallery-img">
             </div>
         </div>
+    </section>
+
+    <div class="highlight-container">
+        <span class="highlight-3d-text">
+            এলাকার সর্ববৃহৎ কম্পিউটার ট্রেনিং সেন্টার
+        </span>
+    </div>
+
+    <section class="counter-section" id="counterSection">
+        <div class="counter-box">
+            <i class="fas fa-user-graduate counter-icon"></i>
+            <h2 class="counter-number" data-target="1000">0</h2>
+            <p class="counter-text">আমাদের কাছে কোর্স কমপ্লিট করা ছাত্র-ছাত্রীর সংখ্যা</p>
+        </div>
+    </section>
+
+    <section class="section-padding">
+        <div class="section-title">
+            <h2 data-aos="fade-down">আমাদের বিশেষ কোর্সসমূহ</h2>
+            <p style="font-size: 0.9rem; color: #666;">কার্ডে ক্লিক করে বিস্তারিত জানুন</p>
+        </div>
+        <div class="course-grid">
+            <div class="course-card" onclick="showDetails('ai')" data-aos="fade-up">
+                <div class="popular-badge">POPULAR</div>
+                <i class="fas fa-robot"></i>
+                <h3>AI Diploma (1 Year)</h3>
+                <p>AI + Coding + Full Computer</p>
+            </div>
+            <div class="course-card" onclick="showDetails('basic')" data-aos="fade-up" data-aos-delay="100">
+                <i class="fas fa-laptop"></i>
+                <h3>Computer Basic</h3>
+                <p>নতুনদের জন্য সেরা ফাউন্ডেশন</p>
+            </div>
+            <div class="course-card" onclick="showDetails('web')" data-aos="fade-up" data-aos-delay="200">
+                <i class="fas fa-globe"></i>
+                <h3>Website Dev</h3>
+                <p>নিজের ওয়েবসাইট বানাও</p>
+            </div>
+            <div class="course-card" onclick="showDetails('tally')" data-aos="fade-up" data-aos-delay="300">
+                <i class="fas fa-calculator"></i>
+                <h3>Tally & Adv Excel</h3>
+                <p>Professional Accounting</p>
+            </div>
+            <div class="course-card" onclick="showDetails('graphics')" data-aos="fade-up" data-aos-delay="400">
+                <i class="fas fa-palette"></i>
+                <h3>Graphics Design</h3>
+                <p>ডিজাইন মাস্টার হোন</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="section-padding" style="background: rgba(255,255,255,0.7); border-radius: 20px;">
+        <div class="section-title">
+            <h2 data-aos="fade-up">কেন আমরা সেরা?</h2>
+        </div>
+        <div class="comparison-wrapper">
+            <div class="comp-card comp-us" data-aos="fade-right">
+                <h3 style="color:var(--dark-blue); font-size:1.4rem;"><i class="fas fa-check-circle"></i> আমাদের ইনস্টিটিউট</h3>
+                 <ul class="comp-list">
+                    <li><i class="fas fa-check"></i> Computer + AI + Coding একসাথে</li>
+                 <li><i class="fas fa-check"></i> পাঁচ বছর পুরন উপলক্ষে AI কোর্সের উপর 50% Discount</li>
+                    <li><i class="fas fa-check"></i> আধুনিক সিলেবাস,Ac ল্যাব, ফ্রি হাইস্পিড WiFi,</li>
+                 <li><i class="fas fa-check"></i> ১০০% মানিব্যাগ পলিসি</li>
+                    <li><i class="fas fa-check"></i> গার্জেনদের সঙ্গে নিয়মিত যোগাযোগ</li>
+                 <li><i class="fas fa-check"></i> সাত বছরের অভিজ্ঞ,ধৈর্যশীল শিক্ষক</li>
+                    <li><i class="fas fa-check"></i> প্রতি মাসে বেস্ট স্টুডেন্ট অফ দ্য মান্থ পুরস্কার</li>
+                    <li><i class="fas fa-check"></i> আজীবন ফ্রি প্র্যাকটিস</li>
+                    <li><i class="fas fa-check"></i> কোর্স শেষে সরকারি সার্টিফিকেট</li>
+                </ul>
+            </div>
+            <div class="comp-card comp-others" data-aos="fade-left">
+                <h3 style="color:#666; font-size:1.4rem;"><i class="fas fa-times-circle"></i> সাধারণ সেন্টার</h3>
+                <ul class="comp-list">
+                    <li><i class="fas fa-times"></i> শুধুমাত্র বেসিক এবং ডিপ্লোমা শেখায় যা আজকের দিনে অপ্রয়োজনীয়</li>
+                    <li><i class="fas fa-times"></i> পুরোনো সিলেবাস</li>
+                    <li><i class="fas fa-times"></i> কোর্স শেষে,কোনো সাপোর্ট নেই</li>
+                 <li><i class="fas fa-check"></i> সার্টিফিকেটের গ্রহণযোগ্যতা কম</li>
+                 <li><i class="fas fa-check"></i>কোর্স ফি অনেক বেশি </li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="fee-section" data-aos="zoom-in">
+            <div class="fee-card fee-others" style="background:#f8f9fa; border: 1px solid #ddd;">
+                <h4>অন্যান্য সেন্টারের ফি</h4>
+                <p style="font-size:1.5rem; margin:10px 0; color: #555;">₹5500 – ₹7000</p>
+                <small>(AI নেই,নরমাল ডিপ্লোমা)</small>
+            </div>
+            <div class="fee-card fee-us">
+                <span style="color:var(--gold); font-weight:bold; letter-spacing:1px; background:rgba(0,0,0,0.2); padding:2px 10px; border-radius:4px;">SPECIAL OFFER!</span>
+                <h4 style="margin-top:10px;">আমাদের AI ডিপ্লোমা course ফি</h4>
+                <p style="text-decoration: line-through; opacity: 0.7;">₹8000</p>
+                <span class="price-final">50% discount - ₹4000 ONLY</span>
+            </div>
+        </div>
+    </section>
+
+    <section class="certificate-section">
+        <div class="section-title">
+            <h2 data-aos="fade-down" style="color:#2c3e50">আমাদের সার্টিফিকেট</h2>
+            <p style="font-size:0.9rem;">সরকারি মান্যতা প্রাপ্ত ভ্যালুয়েবল সার্টিফিকেট</p>
+        </div>
+        <div class="cert-container">
+            <div class="cert-frame">
+                <img src="https://i.postimg.cc/T2CRVdst/IMG_20260123_WA0020.jpg" class="cert-img" alt="2nd Rank in WB">
+            </div>
+            <div class="cert-frame">
+                <img src="https://i.postimg.cc/fWBwczPf/IMG_20260123_WA0023.jpg" class="cert-img" alt="Certificate">
+            </div>
+            <div class="cert-frame">
+                <img src="https://i.postimg.cc/59nxB4r3/IMG_20260123_WA0024.jpg" class="cert-img" alt="Marksheet">
+            </div>
+        </div>
+        <p style="margin-top:20px; font-style:italic; font-size:0.8rem; color:#555;">(ISO & Govt. of India Recognized)</p>
     </section>
 
     <section style="background:white; padding:50px 5%; text-align:center; border-top:5px solid var(--primary);">
@@ -535,64 +519,77 @@
 
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
-        AOS.init({ 
-            duration: 800,
-            once: true,
-            disable: 'mobile' 
-        });
+        AOS.init({ duration: 800, once: true, disable: 'mobile' });
 
-        // Toast Notification
+        // Toast
         setInterval(() => {
             const t = document.getElementById('admissionToast');
             t.classList.add('active');
             setTimeout(() => t.classList.remove('active'), 5000);
         }, 15000);
 
-        // Course Data
+        // Counter Animation
+        const counterSection = document.querySelector('#counterSection');
+        const counters = document.querySelectorAll('.counter-number');
+        let started = false;
+
+        const startCounter = () => {
+            counters.forEach(counter => {
+                counter.innerText = '0';
+                const target = +counter.getAttribute('data-target');
+                const duration = 2000; 
+                const increment = target / (duration / 20); 
+
+                const updateCounter = () => {
+                    const c = +counter.innerText.replace('+', '');
+                    if (c < target) {
+                        counter.innerText = `${Math.ceil(c + increment)}`;
+                        setTimeout(updateCounter, 20);
+                    } else {
+                        counter.innerText = target + "+";
+                    }
+                };
+                updateCounter();
+            });
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            if (entries[0].isIntersecting && !started) {
+                startCounter();
+                started = true;
+            }
+        }, { threshold: 0.5 });
+        observer.observe(counterSection);
+
+        // Course & Modal Logic
         const courses = {
-            ai: {
-                title: "🔥 AI Diploma Course",
-                list: ["Computer Fundamentals", "MS Office (Advanced)", "Internet & Email", "Artificial Intelligence Tools", "Coding (HTML/CSS)", "Tally & Accounting"]
-            },
+            ai: { title: "🔥 AI Diploma Course", list: ["Computer Fundamentals", "MS Office (Advanced)", "Internet & Email", "Artificial Intelligence Tools", "Coding (HTML/CSS)", "Tally & Accounting"] },
             basic: { title: "💻 Computer Basic", list: ["Typing", "Notepad/Paint", "MS Word, Excel, PPT", "Internet Surfing"] },
             web: { title: "🌐 Website Dev", list: ["HTML5 & CSS3", "JavaScript Basic", "Responsive Design", "Hosting Knowledge"] },
             tally: { title: "📊 Tally & Excel", list: ["Accounting Rules", "Tally Prime with GST", "Advanced Excel Formula", "Payroll"] },
             graphics: { title: "🎨 Graphics Design", list: ["Photoshop", "Logo Designing", "Banner Creation", "AI Design Tools"] }
         };
-
         function showDetails(k) {
             document.getElementById('modalBody').innerHTML = `<h2 style="color:var(--primary); font-size:1.5rem;">${courses[k].title}</h2><ul class="syllabus-list">${courses[k].list.map(i=>`<li>${i}</li>`).join('')}</ul>`;
             document.getElementById('detailsModal').style.display = 'flex';
         }
         function closeDetails() { document.getElementById('detailsModal').style.display = 'none'; }
-        function openForm() { 
-            closeDetails();
-            document.getElementById('formModal').style.display = 'flex'; 
-        }
+        function openForm() { closeDetails(); document.getElementById('formModal').style.display = 'flex'; }
         function closeForm() { document.getElementById('formModal').style.display = 'none'; }
-
-        // Close modal on outside click
         window.onclick = function(event) {
             const m1 = document.getElementById('detailsModal');
             const m2 = document.getElementById('formModal');
             if (event.target == m1) m1.style.display = "none";
             if (event.target == m2) m2.style.display = "none";
         }
-
         document.getElementById('inquiryForm').onsubmit = function(e){
             e.preventDefault();
             this.style.display='none';
             document.getElementById('successMsg').style.display='block';
-            setTimeout(() => {
-                closeForm();
-                // Reset form for next use
-                this.reset();
-                this.style.display='flex';
-                document.getElementById('successMsg').style.display='none';
-            }, 2500);
+            setTimeout(() => { closeForm(); this.reset(); this.style.display='flex'; document.getElementById('successMsg').style.display='none'; }, 2500);
         }
 
-        // Hero Slider Logic
+        // Slider
         let sIdx = 0;
         setInterval(() => {
             sIdx = (sIdx + 1) % 5;
