@@ -2,285 +2,293 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>TIKARKHANJI JAWAHARLAL NEHRU YOUTH COMPUTER TRAINING INSTITUTE</title>
     
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800;900&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 
     <style>
         :root {
-            --primary: #007bff;
-            --dark-blue: #004494;
-            /* Premium Gradient Background */
-            --colorful-gradient: linear-gradient(135deg, #81D4FA 0%, #FFF59D 50%, #F48FB1 100%);
-            --card-gradient: linear-gradient(145deg, #ffffff, #f0f0f0);
-            --gold: #FFD700;
-            --text-dark: #2c3e50;
-            --shadow-3d: 8px 8px 16px rgba(0,0,0,0.1), -8px -8px 16px rgba(255,255,255,0.8);
+            --primary: #3b82f6; /* Bright Blue */
+            --primary-glow: #60a5fa;
+            --accent: #fbbf24; /* Gold */
+            --text-main: #f1f5f9; /* Off White */
+            --text-muted: #94a3b8; /* Light Grey */
+            
+            /* Dark Glassmorphism Variables */
+            --glass-bg: rgba(30, 41, 59, 0.7); /* Dark Blueish Glass */
+            --glass-border: 1px solid rgba(255, 255, 255, 0.1);
+            --card-bg: rgba(15, 23, 42, 0.6);
+            
+            /* 3D Shadows for Dark Mode */
+            --shadow-3d: 0 10px 30px rgba(0,0,0,0.5), inset 0 0 0 1px rgba(255,255,255,0.1);
+            --glow: 0 0 20px rgba(59, 130, 246, 0.15);
         }
 
-        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Poppins', 'Hind Siliguri', sans-serif; scroll-behavior: smooth; }
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Poppins', 'Hind Siliguri', sans-serif; -webkit-tap-highlight-color: transparent; }
         
         body { 
-            background: var(--colorful-gradient);
-            background-attachment: fixed; /* Keeps gradient fixed while scrolling */
-            color: var(--text-dark); 
+            /* PROFESSIONAL DARK ANIMATED BACKGROUND */
+            background: linear-gradient(-45deg, #0f172a, #1e293b, #172554, #020617);
+            background-size: 400% 400%;
+            animation: gradientBG 15s ease infinite;
+            color: var(--text-main); 
             overflow-x: hidden; 
         }
 
-        /* --- 1. Navbar --- */
+        @keyframes gradientBG {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        /* --- 1. Navbar (Dark Glass) --- */
         nav {
             display: flex; justify-content: space-between; align-items: center;
             padding: 0 5%; position: fixed; width: 100%; top: 0;
-            background: rgba(255, 255, 255, 0.95); 
-            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-            z-index: 1000; height: 60px; backdrop-filter: blur(5px);
+            background: rgba(15, 23, 42, 0.95); 
+            box-shadow: 0 4px 20px rgba(0,0,0,0.4);
+            z-index: 1000; height: 65px; backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(255,255,255,0.1);
         }
-        .scrolling-wrapper { flex: 1; overflow: hidden; white-space: nowrap; margin-right: 15px; mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent); }
+        .scrolling-wrapper { flex: 1; overflow: hidden; white-space: nowrap; margin-right: 15px; mask-image: linear-gradient(to right, transparent, black 5%, black 95%, transparent); }
         .scrolling-text {
-            display: inline-block; font-weight: 700; font-size: 0.9rem; color: var(--primary);
-            text-transform: uppercase; animation: scrollText 20s linear infinite;
+            display: inline-block; font-weight: 700; font-size: 0.9rem; color: var(--primary-glow);
+            text-transform: uppercase; animation: scrollText 25s linear infinite; letter-spacing: 0.5px;
         }
         @keyframes scrollText { 0% { transform: translateX(100%); } 100% { transform: translateX(-100%); } }
 
-        /* --- 2. Hero Slider (Original 5 Images) --- */
+        /* --- 2. Hero Slider --- */
         .slider-container { 
-            position: relative; width: 100%; height: 60vh; overflow: hidden; margin-top: 60px; 
-            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            position: relative; width: 100%; height: 65vh; overflow: hidden; margin-top: 65px; 
+            box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+            border-bottom-left-radius: 40px; border-bottom-right-radius: 40px;
         }
-        /* Mobile height adjustment */
-        @media (max-width: 768px) { .slider-container { height: 50vh; } }
+        @media (max-width: 768px) { .slider-container { height: 50vh; border-radius: 0 0 25px 25px; } }
 
         .slider { display: flex; width: 500%; height: 100%; transition: transform 0.8s cubic-bezier(0.25, 1, 0.5, 1); }
         .slide { width: 100%; height: 100%; position: relative; }
-        .slide img { width: 100%; height: 100%; object-fit: cover; }
+        .slide img { width: 100%; height: 100%; object-fit: cover; filter: brightness(0.8); } /* Slightly darker images for better text contrast */
         .slide-overlay {
             position: absolute; top: 0; left: 0; width: 100%; height: 100%;
-            background: linear-gradient(to right, rgba(0,0,0,0.7) 30%, transparent 100%);
+            background: linear-gradient(to right, rgba(0,0,0,0.9) 20%, transparent 100%);
             display: flex; flex-direction: column; justify-content: center; padding-left: 8%;
         }
         .slide-overlay h1 { 
-            color: white; font-size: clamp(1.8rem, 5vw, 3.5rem); margin-bottom: 10px; line-height: 1.2;
-            text-shadow: 2px 2px 0px var(--primary); transform: translateZ(50px);
+            color: white; font-size: clamp(2rem, 5vw, 4rem); margin-bottom: 10px; line-height: 1.1; font-weight: 800;
+            text-shadow: 0 0 20px rgba(59, 130, 246, 0.6); /* Neon Glow */
         }
-        .slide-overlay p { color: #f1f1f1; font-size: clamp(1rem, 2.5vw, 1.2rem); margin-bottom: 25px; }
+        .slide-overlay p { color: #cbd5e1; font-size: clamp(1rem, 3vw, 1.4rem); margin-bottom: 25px; font-weight: 500; }
 
-        /* --- 3. Gallery (Success Students - All Images Restored) --- */
-        .gallery-wrapper {
-            background: rgba(255, 255, 255, 0.6); 
-            backdrop-filter: blur(5px); padding-bottom: 20px;
-        }
-        .gallery-container { overflow: hidden; padding: 20px 0; position: relative; }
-        .gallery-container::before, .gallery-container::after {
-            content: ""; position: absolute; top: 0; width: 60px; height: 100%; z-index: 2; pointer-events: none;
-        }
-        .gallery-container::before { left: 0; background: linear-gradient(to right, rgba(255,255,255,0.9), transparent); }
-        .gallery-container::after { right: 0; background: linear-gradient(to left, rgba(255,255,255,0.9), transparent); }
-
-        .gallery-track { display: flex; gap: 15px; width: max-content; animation: scrollGallery 60s linear infinite; }
-        .gallery-track:hover { animation-play-state: paused; } /* Pause on touch/hover */
-        
-        @keyframes scrollGallery { 0% { transform: translateX(0); } 100% { transform: translateX(calc(-100% + 100vw)); } }
-        
-        .gallery-img { 
-            width: 240px; height: 320px; object-fit: cover; border-radius: 15px; 
-            border: 4px solid white; box-shadow: 0 8px 20px rgba(0,0,0,0.15); 
-        }
-        /* Mobile size adjustment for gallery images */
-        @media (max-width: 768px) {
-            .gallery-img { width: 180px; height: 240px; }
-        }
-
-        /* --- 4. 3D HIGHLIGHT TEXT (NO CLICK, CONTINUOUS ANIMATION) --- */
-        .highlight-container {
-            text-align: center;
-            padding: 40px 10px 10px 10px;
-            background: transparent;
-            perspective: 1000px; /* Essential for 3D */
-            overflow: visible;
-        }
-
-        .highlight-3d-text {
-            display: block;
-            font-size: 2rem; /* Mobile optimized base size */
-            font-weight: 900;
-            line-height: 1.3;
-            text-align: center;
-            
-            /* Continuous Rainbow Gradient */
-            background: linear-gradient(90deg, #ff0000, #ff7f00, #ffd700, #008000, #0000ff, #4b0082, #9400d3, #ff0000);
-            background-size: 400% 100%;
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            
-            /* Animations */
-            animation: 
-                gradientShift 4s linear infinite, 
-                float3D 4s ease-in-out infinite;
-            
-            /* 3D Drop Shadow (Since text is transparent, we use filter) */
-            filter: drop-shadow(0px 5px 5px rgba(0,0,0,0.3));
-        }
-
-        @media (min-width: 768px) {
-            .highlight-3d-text { font-size: 3.5rem; } /* Larger on desktop */
-        }
-
-        @keyframes gradientShift {
-            0% { background-position: 0% 50%; }
-            100% { background-position: 100% 50%; }
-        }
-
-        @keyframes float3D {
-            0%, 100% { transform: translateY(0) rotateX(0deg) rotateY(0deg) scale(1); }
-            25% { transform: translateY(-10px) rotateX(5deg) rotateY(2deg) scale(1.02); }
-            50% { transform: translateY(0) rotateX(0deg) rotateY(0deg) scale(1); }
-            75% { transform: translateY(5px) rotateX(-5deg) rotateY(-2deg) scale(0.98); }
-        }
-
-        /* --- 5. Counter Section --- */
-        .counter-section {
-            background: rgba(255, 255, 255, 0.9);
-            margin: 10px 20px 40px 20px;
-            padding: 30px 20px;
-            border-radius: 20px;
-            text-align: center;
-            box-shadow: 0 10px 20px rgba(0,0,0,0.05);
-            border-bottom: 5px solid var(--gold);
-        }
-        .counter-box { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 5px; }
-        .counter-icon { font-size: 3rem; color: var(--primary); margin-bottom: 10px; animation: bounce 2s infinite; }
-        @keyframes bounce { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
-        
-        .counter-number {
-            font-size: 3.5rem; font-weight: 800; 
-            background: linear-gradient(to right, #007bff, #004494);
-            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
-        }
-        .counter-text { font-size: 1.1rem; font-weight: 600; color: #555; }
-
-        /* --- 6. Course Grid (3D Cards) --- */
+        /* --- 3. Headings --- */
         .section-padding { padding: 60px 5%; }
-        .section-title { text-align: center; margin-bottom: 40px; }
-        .section-title h2 { 
-            color: var(--dark-blue); font-size: 2rem; font-weight: 800; 
-            text-transform: uppercase; text-shadow: 2px 2px 0px rgba(255,255,255,0.5);
-        }
+        .section-title { text-align: center; margin-bottom: 40px; perspective: 1000px; }
         
-        .course-grid { 
-            display: grid; 
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); 
-            gap: 30px; 
+        .section-title h2 { 
+            font-size: clamp(1.8rem, 5vw, 2.5rem); font-weight: 900; text-transform: uppercase;
+            /* Modern Gradient Text */
+            background: linear-gradient(90deg, #60a5fa, #c084fc); 
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+            display: inline-block;
+            filter: drop-shadow(0px 0px 10px rgba(96, 165, 250, 0.3));
+            animation: floatHeading 4s ease-in-out infinite;
+        }
+        .section-title p { color: var(--text-muted); font-size: 0.95rem; margin-top: 5px; }
+
+        @keyframes floatHeading { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-5px); } }
+
+        /* --- 4. Gallery (Dark Mode) --- */
+        .gallery-wrapper { background: rgba(0,0,0,0.2); backdrop-filter: blur(5px); }
+        .gallery-container { overflow: hidden; padding: 20px 0; }
+        .gallery-track { display: flex; gap: 20px; width: max-content; animation: scrollGallery 60s linear infinite; }
+        .gallery-img { 
+            width: 250px; height: 330px; object-fit: cover; border-radius: 20px; 
+            border: 3px solid rgba(255,255,255,0.2); box-shadow: var(--shadow-3d);
+        }
+        @media (max-width: 768px) { .gallery-img { width: 180px; height: 240px; } }
+        @keyframes scrollGallery { 0% { transform: translateX(0); } 100% { transform: translateX(calc(-100% + 100vw)); } }
+
+        /* --- 5. Classroom (Zoom Feature) --- */
+        .classroom-grid {
+            display: flex; gap: 30px; justify-content: center; flex-wrap: wrap; margin-top: 30px;
+        }
+        .class-card {
+            flex: 1; min-width: 300px; max-width: 500px; height: 320px;
+            border-radius: 25px; overflow: hidden; position: relative;
+            box-shadow: var(--shadow-3d); border: 2px solid rgba(255,255,255,0.1); cursor: zoom-in;
+            transition: all 0.4s ease;
+        }
+        .class-card:hover { transform: translateY(-5px); border-color: var(--primary); box-shadow: 0 0 20px rgba(59, 130, 246, 0.4); }
+        .class-card img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s; }
+        .class-card:hover img { transform: scale(1.1); }
+        .class-badge {
+            position: absolute; bottom: 20px; left: 20px;
+            background: rgba(15, 23, 42, 0.9); padding: 8px 20px; border-radius: 50px;
+            color: var(--primary-glow); font-weight: bold; border: 1px solid rgba(255,255,255,0.1);
         }
 
+        /* --- 6. 3D Highlight Text (Neon) --- */
+        .highlight-container { padding: 40px 10px; text-align: center; perspective: 1000px; }
+        .highlight-3d-text {
+            font-size: clamp(1.8rem, 5vw, 3.5rem); font-weight: 900;
+            /* Bright Neon Gradient for Dark BG */
+            background: linear-gradient(90deg, #ff5f6d, #ffc371, #22d3ee, #a78bfa);
+            background-size: 300% 100%;
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+            animation: rainbow 4s linear infinite;
+            filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.2));
+            display: block; line-height: 1.3;
+        }
+        @keyframes rainbow { 0% { background-position: 0% 50%; } 100% { background-position: 100% 50%; } }
+
+        /* --- 7. Counter (Dark Card) --- */
+        .counter-section {
+            background: var(--card-bg); margin: 0 20px 40px 20px; padding: 40px; border-radius: 30px;
+            text-align: center; box-shadow: var(--shadow-3d); border: var(--glass-border);
+            backdrop-filter: blur(10px);
+        }
+        .counter-number { 
+            font-size: 3.5rem; font-weight: 800; 
+            color: transparent; -webkit-text-stroke: 1px var(--primary-glow); /* Outline effect */
+            background: linear-gradient(to bottom, #fff, #94a3b8); -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+        }
+
+        /* --- 8. Courses (Glass Cards) --- */
+        .course-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px; }
         .course-card { 
-            background: var(--card-gradient); padding: 40px 20px; border-radius: 20px; 
+            background: var(--glass-bg); padding: 40px 20px; border-radius: 30px; 
             text-align: center; position: relative; overflow: hidden;
-            box-shadow: var(--shadow-3d); transition: all 0.4s ease;
-            transform-style: preserve-3d; perspective: 1000px;
+            box-shadow: var(--shadow-3d); border: var(--glass-border);
+            transition: all 0.3s ease; backdrop-filter: blur(10px);
         }
-        .course-card:hover { transform: translateY(-10px); }
-        .course-card i { font-size: 3.5rem; color: var(--primary); margin-bottom: 20px; }
+        .course-card:hover { 
+            transform: translateY(-10px); 
+            background: rgba(30, 41, 59, 0.9); 
+            border-color: var(--primary);
+        }
+        .course-card i { 
+            font-size: 3.5rem; color: var(--primary-glow); margin-bottom: 20px; 
+            filter: drop-shadow(0 0 15px rgba(59, 130, 246, 0.5)); 
+        }
+        .course-card h3 { color: white; margin-bottom: 10px; font-size: 1.3rem; }
+        .course-card p { color: var(--text-muted); }
+        
         .popular-badge { 
-            position: absolute; top: 15px; right: -35px; background: linear-gradient(45deg, #ffb700, #ff8c00); 
-            color: white; padding: 7px 40px; transform: rotate(45deg); font-size: 0.75rem; font-weight: 800; 
-            box-shadow: 0 5px 10px rgba(0,0,0,0.2);
+            position: absolute; top: 15px; right: -35px; background: linear-gradient(45deg, #f59e0b, #ea580c); 
+            color: white; padding: 5px 40px; transform: rotate(45deg); font-size: 0.75rem; font-weight: 800; 
+            box-shadow: 0 0 10px rgba(245, 158, 11, 0.5);
         }
 
-        /* --- 7. Comparison & Fee --- */
-        .comparison-wrapper { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; margin-top: 30px; }
-        .comp-card { padding: 30px; border-radius: 20px; box-shadow: var(--shadow-3d); background: rgba(255,255,255,0.9); }
-        .comp-us { border-left: 5px solid var(--primary); }
-        .comp-list { list-style: none; margin-top: 15px; }
-        .comp-list li { margin-bottom: 12px; display: flex; gap: 10px; align-items: center; font-weight: 500; font-size: 0.95rem; }
-        .comp-us li i { color: #25d366; font-size: 1.2rem; }
-        .comp-others li i { color: #ff4757; }
+        /* --- 9. Comparison & Fee --- */
+        .comparison-wrapper { display: flex; gap: 30px; flex-wrap: wrap; margin-top: 30px; }
+        .comp-card { 
+            flex: 1; min-width: 300px; padding: 35px; border-radius: 30px; 
+            box-shadow: var(--shadow-3d); background: var(--card-bg); 
+            border: var(--glass-border); backdrop-filter: blur(10px);
+        }
+        .comp-us { border-left: 6px solid #22c55e; }
+        .comp-others { border-left: 6px solid #ef4444; }
+        
+        .comp-list { list-style: none; margin-top: 20px; }
+        .comp-list li { margin-bottom: 12px; display: flex; gap: 10px; align-items: flex-start; font-size: 0.95rem; font-weight: 500; color: #e2e8f0; }
 
         .fee-section { margin-top: 50px; display: flex; justify-content: center; gap: 30px; flex-wrap: wrap; }
-        .fee-card { flex: 1; min-width: 280px; padding: 30px; text-align: center; border-radius: 20px; box-shadow: var(--shadow-3d); }
-        .fee-us { background: linear-gradient(135deg, #0056b3, #004494); color: white; transform: scale(1.05); border: 2px solid white; }
-        .price-final { font-size: 2.5rem; font-weight: 800; color: #ffb700; display: block; margin-top: 10px; animation: pulse 1.5s infinite; }
-        @keyframes pulse { 0% { transform: scale(1); } 50% { transform: scale(1.05); } 100% { transform: scale(1); } }
+        .fee-card { 
+            flex: 1; min-width: 280px; padding: 30px; text-align: center; border-radius: 30px; 
+            box-shadow: var(--shadow-3d); background: #1e293b; border: 1px solid rgba(255,255,255,0.05);
+        }
+        .fee-us { 
+            background: linear-gradient(135deg, #1e40af, #1e3a8a); color: white; 
+            transform: scale(1.05); border: 2px solid var(--primary-glow); 
+            box-shadow: 0 0 30px rgba(37, 99, 235, 0.3);
+        }
+        .price-final { font-size: 2.5rem; font-weight: 900; color: #facc15; display: block; margin-top: 10px; text-shadow: 0 0 10px rgba(250, 204, 21, 0.5); }
 
-        /* --- 8. Certificates --- */
-        .certificate-section { 
-            background: rgba(255,255,255,0.7); padding: 60px 5%; text-align: center; overflow: hidden;
-            margin-top: 50px; border-radius: 30px 30px 0 0;
-        }
-        .cert-container { 
-            display: flex; gap: 30px; justify-content: center; align-items: center; 
-            margin-top: 40px; overflow-x: auto; padding-bottom: 20px;
-        }
+        /* --- 10. Certificates --- */
+        .cert-container { display: flex; gap: 25px; overflow-x: auto; padding: 20px; justify-content: center; }
+        @media(max-width: 768px) { .cert-container { justify-content: flex-start; } }
         .cert-frame {
-            min-width: 280px; height: 380px; background: white; border: 8px solid var(--gold); border-radius: 10px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.2); position: relative;
-            display: flex; justify-content: center; align-items: center; overflow: hidden;
+            min-width: 280px; height: 380px; background: white; border: 8px solid #333; 
+            border-image: linear-gradient(45deg, #d4af37, #fcf6ba, #d4af37) 1;
+            box-shadow: 0 15px 30px rgba(0,0,0,0.5);
         }
         .cert-img { width: 100%; height: 100%; object-fit: cover; }
 
         /* --- UI Elements --- */
         .btn { 
-            padding: 12px 30px; border-radius: 50px; text-decoration: none; font-weight: 700; border: none; cursor: pointer; display: inline-block; transition: 0.3s; 
-            box-shadow: 0 5px 15px rgba(0,0,0,0.2); text-transform: uppercase; letter-spacing: 1px;
+            padding: 12px 35px; border-radius: 50px; text-decoration: none; font-weight: 700; border: none; cursor: pointer; 
+            display: inline-block; box-shadow: 0 5px 15px rgba(0,0,0,0.3); text-transform: uppercase; font-size: 0.9rem; transition: 0.3s;
         }
-        .btn-primary { background: linear-gradient(90deg, #007bff, #0056b3); color: white; }
-        .btn-query { background: linear-gradient(90deg, #ff4757, #ff6b81); color: white; }
-        .btn-facebook { background: #3b5998; color: white; }
+        .btn:active { transform: scale(0.95); }
+        .btn-primary { background: linear-gradient(90deg, #2563eb, #3b82f6); color: white; }
+        .btn-query { background: linear-gradient(90deg, #ef4444, #f87171); color: white; }
+        .btn-facebook { background: #1877f2; color: white; }
 
         .floating-btns { position: fixed; bottom: 25px; right: 20px; display: flex; flex-direction: column; gap: 15px; z-index: 9999; }
         .float-icon { 
             width: 55px; height: 55px; border-radius: 50%; display: flex; justify-content: center; align-items: center; 
-            color: white; font-size: 24px; text-decoration: none; 
-            box-shadow: 0 5px 15px rgba(0,0,0,0.3); border: 2px solid white;
+            color: white; font-size: 26px; text-decoration: none; box-shadow: 0 5px 15px rgba(0,0,0,0.5); border: 2px solid rgba(255,255,255,0.2); background: rgba(0,0,0,0.6); backdrop-filter: blur(5px);
         }
-        .bg-wa { background: #25d366; }
-        .bg-call { background: var(--primary); }
+        .bg-wa { color: #25d366; border-color: #25d366; }
+        .bg-call { color: var(--primary-glow); border-color: var(--primary-glow); }
 
-        /* --- Modals & Toast --- */
-        .modal { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.85); backdrop-filter: blur(5px); display: none; justify-content: center; align-items: center; z-index: 10001; padding: 20px; }
-        .modal-content { background: white; padding: 30px; border-radius: 20px; width: 100%; max-width: 450px; position: relative; animation: zoomIn 0.3s; max-height: 90vh; overflow-y: auto; }
+        /* --- Modals (Dark Theme) --- */
+        .modal { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.95); backdrop-filter: blur(10px); display: none; justify-content: center; align-items: center; z-index: 10001; padding: 20px; }
+        .modal-content { 
+            background: #1e293b; padding: 30px; border-radius: 25px; width: 100%; max-width: 450px; 
+            position: relative; animation: zoomIn 0.3s; max-height: 90vh; overflow-y: auto;
+            border: 1px solid rgba(255,255,255,0.1); color: #fff;
+        }
         @keyframes zoomIn { from {transform: scale(0.8); opacity: 0;} to {transform: scale(1); opacity: 1;} }
-        .close-btn { position: absolute; top: 15px; right: 20px; font-size: 25px; cursor: pointer; color: #555; }
-        .syllabus-list { text-align: left; margin-top: 15px; padding-left: 20px; line-height: 1.8; }
-        
-        .toast { position: fixed; bottom: 100px; left: -100%; background: linear-gradient(45deg, #ff4757, #ff6b81); color: white; padding: 15px 25px; border-radius: 0 50px 50px 0; box-shadow: 5px 5px 15px rgba(0,0,0,0.2); z-index: 9998; transition: left 0.5s ease; display: flex; align-items: center; gap: 10px; max-width: 80%; }
-        .toast.active { left: 0; }
+        .close-btn { position: absolute; top: 15px; right: 20px; font-size: 30px; cursor: pointer; color: #ef4444; }
 
-        /* --- Mobile Optimization Specifics --- */
+        /* Image Zoom Modal */
+        #imgModal .modal-content { background: transparent; box-shadow: none; padding: 0; max-width: 800px; border: none; }
+        #fullImage { width: 100%; height: auto; border-radius: 10px; border: 2px solid rgba(255,255,255,0.5); box-shadow: 0 0 50px rgba(0,0,0,0.8); }
+
+        /* Form Styling */
+        input, textarea { 
+            width: 100%; padding: 15px; margin-bottom: 15px; border: 1px solid #334155; border-radius: 12px; 
+            font-size: 1rem; outline: none; transition: 0.3s; 
+            background: #0f172a; color: white;
+        }
+        input:focus { border-color: var(--primary); background: #1e293b; box-shadow: 0 0 10px rgba(59, 130, 246, 0.2); }
+
+        .toast { position: fixed; bottom: 100px; left: -100%; background: rgba(15, 23, 42, 0.95); color: white; padding: 15px 25px; border-radius: 0 50px 50px 0; box-shadow: 0 0 20px rgba(0,0,0,0.5); z-index: 9998; transition: left 0.5s ease; display: flex; align-items: center; gap: 10px; border: 1px solid rgba(255,255,255,0.1); }
+        .toast.active { left: 0; }
+        
+        /* Mobile Specifics */
         @media (max-width: 768px) {
-            .section-padding { padding: 40px 5%; }
-            .section-title h2 { font-size: 1.8rem; margin-bottom: 15px; }
-            .comparison-wrapper { grid-template-columns: 1fr; }
-            .fee-section { gap: 20px; }
+            .section-padding { padding: 50px 15px; }
+            .class-card { height: 260px; }
+            .fee-section { flex-direction: column; }
             .fee-us { transform: scale(1); }
-            .cert-container { justify-content: flex-start; } /* Allow horizontal scroll */
-            .cert-frame { min-width: 250px; height: 350px; }
-            
-            /* Ensure animations aren't too jarring on mobile */
-            .course-card:hover { transform: none; }
+            .comparison-wrapper { flex-direction: column; }
+            .section-title h2 { font-size: 1.8rem; }
         }
     </style>
 </head>
 <body>
 
     <div class="toast" id="admissionToast">
-        <i class="fas fa-bullhorn fa-lg"></i>
+        <i class="fas fa-bell fa-lg" style="color: #fbbf24;"></i>
         <div>
-            <strong>ভর্তি চলছে!</strong><br>
-            <small>Session 2026 Starting Soon</small>
+            <strong style="font-size: 1rem;">ভর্তি চলছে!</strong><br>
+            <small style="opacity: 0.8; color: #94a3b8;">Session 2026 Starting Soon</small>
         </div>
     </div>
 
     <nav>
         <div class="scrolling-wrapper">
             <div class="scrolling-text">
-                TIKARKHANJI JAWAHARLAL NEHRU YOUTH COMPUTER TRAINING INSTITUTE &nbsp;&nbsp;★&nbsp;&nbsp; GOVERNMENT OF INDIA CERTIFIED &nbsp;&nbsp;★&nbsp;&nbsp; ADMISSION OPEN
+                TIKARKHANJI JAWAHARLAL NEHRU YOUTH COMPUTER TRAINING INSTITUTE &nbsp;&nbsp;★&nbsp;&nbsp; GOVERNMENT OF INDIA CERTIFIED &nbsp;&nbsp;★&nbsp;&nbsp; ISO 9001:2015 CERTIFIED
             </div>
         </div>
-        <button onclick="openForm()" class="btn btn-query" style="padding: 6px 15px; font-size: 0.75rem;">Query</button>
+        <button onclick="openForm('General Inquiry')" class="btn btn-query" style="padding: 8px 20px; font-size: 0.75rem;">Query</button>
     </nav>
 
     <div class="floating-btns">
@@ -293,46 +301,22 @@
             <div class="slide">
                 <img src="https://i.postimg.cc/J7y7MV00/IMG_20260123_WA0016.jpg" alt="Lab">
                 <div class="slide-overlay">
-                    <h1>AI Based Training</h1>
-                    <p>আধুনিক ল্যাব ও ১০ বছরের অভিজ্ঞতা</p>
-                    <div><a href="tel:9635419644" class="btn btn-primary">Call Now</a></div>
+                    <h1 data-aos="fade-up">AI Based<br>Smart Training</h1>
+                    <p data-aos="fade-up" data-aos-delay="100">আধুনিক ল্যাব ও ১০ বছরের অভিজ্ঞতা</p>
+                    <div data-aos="fade-up" data-aos-delay="200"><a href="tel:9635419644" class="btn btn-primary">Call Now</a></div>
                 </div>
             </div>
-            <div class="slide">
-                <img src="https://i.postimg.cc/kX5sYsg6/cover.jpg " alt="Students">
-                <div class="slide-overlay">
-                    <h1>Future Ready Skills</h1>
-                    <p>AI, Coding এবং ডিজাইন শিখুন</p>
-                </div>
-            </div>
-            <div class="slide">
-                <img src="https://i.postimg.cc/mZFcVFQd/IMG-20260123-WA0018.jpg" alt="Technology">
-                <div class="slide-overlay">
-                    <h1>Govt. Authorized</h1>
-                    <p>সরকারি মান্যতা প্রাপ্ত সার্টিফিকেট</p>
-                </div>
-            </div>
-            <div class="slide">
-                <img src="https://i.postimg.cc/1RKPrm8Z/IMG-20260123-WA0011.jpg" alt="Education">
-                <div class="slide-overlay">
-                    <h1>Best Guidance</h1>
-                    <p>স্টুডেন্ট ফ্রেন্ডলি পরিবেশ</p>
-                </div>
-            </div>
-            <div class="slide">
-                <img src="https://i.postimg.cc/Y2JrSnLH/IMG_20260123_WA0015.jpg" alt="Success">
-                <div class="slide-overlay">
-                    <h1>Join Us Today</h1>
-                    <p>আপনার উজ্জ্বল ভবিষ্যতের জন্য</p>
-                </div>
-            </div>
+            <div class="slide"><img src="https://i.postimg.cc/kX5sYsg6/cover.jpg" alt="Students"><div class="slide-overlay"><h1>Future Ready Skills</h1><p>AI, Coding এবং ডিজাইন শিখুন</p></div></div>
+            <div class="slide"><img src="https://i.postimg.cc/mZFcVFQd/IMG-20260123-WA0018.jpg" alt="Certificate"><div class="slide-overlay"><h1>Govt. Authorized</h1><p>সরকারি মান্যতা প্রাপ্ত সার্টিফিকেট</p></div></div>
+            <div class="slide"><img src="https://i.postimg.cc/1RKPrm8Z/IMG-20260123-WA0011.jpg" alt="Guidance"><div class="slide-overlay"><h1>Best Guidance</h1><p>স্টুডেন্ট ফ্রেন্ডলি পরিবেশ</p></div></div>
+            <div class="slide"><img src="https://i.postimg.cc/Y2JrSnLH/IMG_20260123_WA0015.jpg" alt="Join"><div class="slide-overlay"><h1>Join Us Today</h1><p>আপনার উজ্জ্বল ভবিষ্যতের জন্য</p></div></div>
         </div>
     </section>
 
     <section class="section-padding gallery-wrapper">
         <div class="section-title">
-            <h2 style="color:var(--dark-blue); font-size: 2rem;">আমাদের সফল ছাত্র-ছাত্রী</h2>
-            <p style="font-size:0.9rem; color:#555;">(ছবিতে টাচ করে থামিয়ে দেখুন)</p>
+            <h2>সফল ছাত্র-ছাত্রী</h2>
+            <p>আমাদের গর্ব, আমাদের ছাত্রছাত্রী (ছবিতে টাচ করে দেখুন)</p>
         </div>
         <div class="gallery-container">
             <div class="gallery-track">
@@ -347,26 +331,26 @@
                 <img src="https://i.postimg.cc/MHH8DVCM/IMG_20260124_WA0011.jpg" class="gallery-img">
                 <img src="https://i.postimg.cc/76m5h111/IMG-20260124-WA0047.jpg" class="gallery-img">
                 <img src="https://i.postimg.cc/Jh2yLtGV/IMG_20260123_WA0083.jpg" class="gallery-img">
-                <img src="https://i.postimg.cc/fy4JVFcj/IMG_20260123_WA0052.jpg" class="gallery-img">
-                <img src="https://i.postimg.cc/903rDSdb/IMG_20260123_WA0051.jpg" class="gallery-img">
-                <img src="https://i.postimg.cc/L5dnJ7tz/IMG_20260123_WA0054.jpg" class="gallery-img">
-                <img src="https://i.postimg.cc/wMK71PXL/IMG_20260123_WA0061.jpg" class="gallery-img">
-                <img src="https://i.postimg.cc/Kz31vFMB/IMG_20260123_WA0062.jpg" class="gallery-img">
-                <img src="https://i.postimg.cc/G2T4hryL/IMG_20260123_WA0071.jpg" class="gallery-img">
-                <img src="https://i.postimg.cc/vBx4HMVZ/IMG_20260123_WA0072.jpg" class="gallery-img">
-                <img src="https://i.postimg.cc/QtKFxsTs/IMG_20260123_WA0075.jpg" class="gallery-img">
-                <img src="https://i.postimg.cc/XvzZbXpq/IMG_20260123_WA0076.jpg" class="gallery-img">
-                <img src="https://i.postimg.cc/pT5mXxFv/IMG_20260123_WA0074.jpg" class="gallery-img">
-                <img src="https://i.postimg.cc/j2VLD9HM/IMG_20260123_WA0043.jpg" class="gallery-img">
-                <img src="https://i.postimg.cc/J0wGsgNP/IMG_20260123_WA0045.jpg" class="gallery-img">
-                <img src="https://i.postimg.cc/9MwDFV7Y/IMG_20260123_WA0060.jpg" class="gallery-img">
-                <img src="https://i.postimg.cc/50QXN1CQ/IMG_20260123_WA0067.jpg" class="gallery-img">
-                <img src="https://i.postimg.cc/prrtZzwT/IMG_20260124_WA0002.jpg" class="gallery-img">
-                <img src="https://i.postimg.cc/NFFw4m37/IMG_20260124_WA0024.jpg" class="gallery-img">
-                <img src="https://i.postimg.cc/nrWfwMxY/IMG_20260124_WA0027.jpg" class="gallery-img">
-                <img src="https://i.postimg.cc/kGGdcK09/IMG_20260124_WA0007.jpg" class="gallery-img">
             </div>
         </div>
+    </section>
+
+    <section class="section-padding" id="classroom">
+        <div class="section-title">
+            <h2 data-aos="fade-down">আমাদের ক্লাসরুম</h2>
+            <p>উন্নতমানের পরিকাঠামো ও শেখার পরিবেশ</p>
+        </div>
+        <div class="classroom-grid">
+            <div class="class-card" data-aos="fade-right" onclick="openImageModal('https://i.postimg.cc/k4FFV6Df/20260213_083511.jpg')">
+                <img src="https://i.postimg.cc/k4FFV6Df/20260213_083511.jpg" alt="Computer Lab">
+                <div class="class-badge"><i class="fas fa-desktop"></i> হাই-টেক কম্পিউটার ল্যাব</div>
+            </div>
+            <div class="class-card" data-aos="fade-left" onclick="openImageModal('https://i.postimg.cc/qRXXthgL/20250319_190218.jpg')">
+                <img src="https://i.postimg.cc/qRXXthgL/20250319_190218.jpg" alt="Theory Room">
+                <div class="class-badge"><i class="fas fa-chalkboard-teacher"></i> স্মার্ট থিওরি ক্লাসরুম</div>
+            </div>
+        </div>
+        <p style="text-align:center; margin-top:15px; font-size:0.8rem; color:#94a3b8;">(ছবিতে ক্লিক করে বড় করে দেখুন)</p>
     </section>
 
     <div class="highlight-container">
@@ -377,16 +361,16 @@
 
     <section class="counter-section" id="counterSection">
         <div class="counter-box">
-            <i class="fas fa-user-graduate counter-icon"></i>
+            <i class="fas fa-user-graduate" style="font-size:3rem; color:var(--primary); margin-bottom:15px;"></i>
             <h2 class="counter-number" data-target="1000">0</h2>
-            <p class="counter-text">আমাদের কাছে কোর্স কমপ্লিট করা ছাত্র-ছাত্রীর সংখ্যা</p>
+            <p style="font-size:1.1rem; color:#cbd5e1;">আমাদের সফল ছাত্র-ছাত্রীর সংখ্যা</p>
         </div>
     </section>
 
     <section class="section-padding">
         <div class="section-title">
-            <h2 data-aos="fade-down">আমাদের বিশেষ কোর্সসমূহ</h2>
-            <p style="font-size: 0.9rem; color: #666;">কার্ডে ক্লিক করে বিস্তারিত জানুন</p>
+            <h2 data-aos="fade-down">আমাদের কোর্সসমূহ</h2>
+            <p>বিস্তারিত জানতে কার্ডে ক্লিক করুন</p>
         </div>
         <div class="course-grid">
             <div class="course-card" onclick="showDetails('ai')" data-aos="fade-up">
@@ -403,7 +387,7 @@
             <div class="course-card" onclick="showDetails('web')" data-aos="fade-up" data-aos-delay="200">
                 <i class="fas fa-globe"></i>
                 <h3>Website Dev</h3>
-                <p>নিজের ওয়েবসাইট বানাও</p>
+                <p>নিজের ওয়েবসাইট বানাও</p>
             </div>
             <div class="course-card" onclick="showDetails('tally')" data-aos="fade-up" data-aos-delay="300">
                 <i class="fas fa-calculator"></i>
@@ -418,75 +402,76 @@
         </div>
     </section>
 
-    <section class="section-padding" style="background: rgba(255,255,255,0.7); border-radius: 20px;">
+    <section class="section-padding" style="background: rgba(0,0,0,0.2);">
         <div class="section-title">
             <h2 data-aos="fade-up">কেন আমরা সেরা?</h2>
         </div>
         <div class="comparison-wrapper">
             <div class="comp-card comp-us" data-aos="fade-right">
-                <h3 style="color:var(--dark-blue); font-size:1.4rem;"><i class="fas fa-check-circle"></i> আমাদের ইনস্টিটিউট</h3>
+                <h3 style="color:var(--primary-glow); font-size:1.4rem; margin-bottom:15px;"><i class="fas fa-check-circle"></i> আমাদের ইনস্টিটিউট</h3>
                  <ul class="comp-list">
-                    <li><i class="fas fa-check"></i> Computer + AI + Coding একসাথে</li>
-                 <li><i class="fas fa-check"></i> পাঁচ বছর পুরন উপলক্ষে AI কোর্সের উপর 50% Discount</li>
-                    <li><i class="fas fa-check"></i> আধুনিক সিলেবাস,Ac ল্যাব, ফ্রি হাইস্পিড WiFi,</li>
-                 <li><i class="fas fa-check"></i> ১০০% মানিব্যাগ পলিসি</li>
-                    <li><i class="fas fa-check"></i> গার্জেনদের সঙ্গে নিয়মিত যোগাযোগ</li>
-                 <li><i class="fas fa-check"></i> সাত বছরের অভিজ্ঞ,ধৈর্যশীল শিক্ষক</li>
-                    <li><i class="fas fa-check"></i> প্রতি মাসে বেস্ট স্টুডেন্ট অফ দ্য মান্থ পুরস্কার</li>
-                    <li><i class="fas fa-check"></i> আজীবন ফ্রি প্র্যাকটিস</li>
-                    <li><i class="fas fa-check"></i> কোর্স শেষে সরকারি সার্টিফিকেট</li>
+                    <li><i class="fas fa-check" style="color:#22c55e"></i> Computer + AI + Coding একসাথে</li>
+                    <li><i class="fas fa-check" style="color:#22c55e"></i> ৫ বছর পূর্তি উপলক্ষে AI কোর্সে 50% Discount</li>
+                    <li><i class="fas fa-check" style="color:#22c55e"></i> আধুনিক সিলেবাস, AC ল্যাব, ফ্রি হাইস্পিড WiFi</li>
+                    <li><i class="fas fa-check" style="color:#22c55e"></i> ১০০% মানিব্যাগ পলিসি</li>
+                    <li><i class="fas fa-check" style="color:#22c55e"></i> গার্জেনদের সঙ্গে নিয়মিত যোগাযোগ</li>
+                    <li><i class="fas fa-check" style="color:#22c55e"></i> ৭ বছরের অভিজ্ঞ ও ধৈর্যশীল শিক্ষক</li>
+                    <li><i class="fas fa-check" style="color:#22c55e"></i> প্রতি মাসে স্টুডেন্ট অফ দ্য মান্থ পুরস্কার</li>
+                    <li><i class="fas fa-check" style="color:#22c55e"></i> আজীবন ফ্রি প্র্যাকটিস সুবিধা</li>
+                    <li><i class="fas fa-check" style="color:#22c55e"></i> কোর্স শেষে সরকারি সার্টিফিকেট</li>
                 </ul>
             </div>
             <div class="comp-card comp-others" data-aos="fade-left">
-                <h3 style="color:#666; font-size:1.4rem;"><i class="fas fa-times-circle"></i> সাধারণ সেন্টার</h3>
+                <h3 style="color:#94a3b8; font-size:1.4rem; margin-bottom:15px;"><i class="fas fa-times-circle"></i> সাধারণ সেন্টার</h3>
                 <ul class="comp-list">
-                    <li><i class="fas fa-times"></i> শুধুমাত্র বেসিক এবং ডিপ্লোমা শেখায় যা আজকের দিনে অপ্রয়োজনীয়</li>
-                    <li><i class="fas fa-times"></i> পুরোনো সিলেবাস</li>
-                    <li><i class="fas fa-times"></i> কোর্স শেষে,কোনো সাপোর্ট নেই</li>
-                 <li><i class="fas fa-check"></i> সার্টিফিকেটের গ্রহণযোগ্যতা কম</li>
-                 <li><i class="fas fa-check"></i>কোর্স ফি অনেক বেশি </li>
+                    <li><i class="fas fa-times" style="color:#ef4444"></i> শুধুমাত্র বেসিক এবং ডিপ্লোমা শেখায়</li>
+                    <li><i class="fas fa-times" style="color:#ef4444"></i> অনেক পুরোনো সিলেবাস</li>
+                    <li><i class="fas fa-times" style="color:#ef4444"></i> কোর্স শেষে কোনো সাপোর্ট নেই</li>
+                    <li><i class="fas fa-times" style="color:#ef4444"></i> সার্টিফিকেটের গ্রহণযোগ্যতা কম</li>
+                    <li><i class="fas fa-times" style="color:#ef4444"></i> কোর্স ফি তুলনামূলক অনেক বেশি</li>
                 </ul>
             </div>
         </div>
 
         <div class="fee-section" data-aos="zoom-in">
-            <div class="fee-card fee-others" style="background:#f8f9fa; border: 1px solid #ddd;">
+            <div class="fee-card fee-others">
                 <h4>অন্যান্য সেন্টারের ফি</h4>
-                <p style="font-size:1.5rem; margin:10px 0; color: #555;">₹5500 – ₹7000</p>
-                <small>(AI নেই,নরমাল ডিপ্লোমা)</small>
+                <p style="font-size:1.8rem; margin:15px 0; color: #cbd5e1; font-weight:700;">₹5500 – ₹7000</p>
+                <small style="color:#94a3b8;">(AI নেই, শুধুমাত্র নরমাল ডিপ্লোমা)</small>
             </div>
             <div class="fee-card fee-us">
-                <span style="color:var(--gold); font-weight:bold; letter-spacing:1px; background:rgba(0,0,0,0.2); padding:2px 10px; border-radius:4px;">SPECIAL OFFER!</span>
-                <h4 style="margin-top:10px;">আমাদের AI ডিপ্লোমা course ফি</h4>
-                <p style="text-decoration: line-through; opacity: 0.7;">₹8000</p>
-                <span class="price-final">50% discount - ₹4000 ONLY</span>
+                <span style="color:#0f172a; font-weight:bold; letter-spacing:1px; background:var(--accent); padding:5px 15px; border-radius:20px; font-size:0.8rem;">SPECIAL OFFER!</span>
+                <h4 style="margin-top:20px;">আমাদের AI ডিপ্লোমা course ফি</h4>
+                <p style="text-decoration: line-through; opacity: 0.7; font-size:1.2rem; color: #cbd5e1;">₹8000</p>
+                <span class="price-final">₹4000 ONLY</span>
+                <p style="margin-top:5px; font-weight:600;">(50% Discount)</p>
             </div>
         </div>
     </section>
 
-    <section class="certificate-section">
+    <section class="section-padding" style="text-align:center;">
         <div class="section-title">
-            <h2 data-aos="fade-down" style="color:#2c3e50">আমাদের সার্টিফিকেট</h2>
-            <p style="font-size:0.9rem;">সরকারি মান্যতা প্রাপ্ত ভ্যালুয়েবল সার্টিফিকেট</p>
+            <h2 data-aos="fade-down">আমাদের সার্টিফিকেট</h2>
+            <p>সরকারি মান্যতা প্রাপ্ত ভ্যালুয়েবল সার্টিফিকেট</p>
         </div>
         <div class="cert-container">
             <div class="cert-frame">
-                <img src="https://i.postimg.cc/T2CRVdst/IMG_20260123_WA0020.jpg" class="cert-img" alt="2nd Rank in WB">
+                <img src="https://i.postimg.cc/T2CRVdst/IMG_20260123_WA0020.jpg" class="cert-img" alt="Certificate">
             </div>
             <div class="cert-frame">
                 <img src="https://i.postimg.cc/fWBwczPf/IMG_20260123_WA0023.jpg" class="cert-img" alt="Certificate">
             </div>
             <div class="cert-frame">
-                <img src="https://i.postimg.cc/59nxB4r3/IMG_20260123_WA0024.jpg" class="cert-img" alt="Marksheet">
+                <img src="https://i.postimg.cc/59nxB4r3/IMG_20260123_WA0024.jpg" class="cert-img" alt="Certificate">
             </div>
         </div>
-        <p style="margin-top:20px; font-style:italic; font-size:0.8rem; color:#555;">(ISO & Govt. of India Recognized)</p>
+        <p style="margin-top:20px; font-style:italic; font-size:0.8rem; color:#94a3b8;">(ISO & Govt. of India Recognized)</p>
     </section>
 
-    <section style="background:white; padding:50px 5%; text-align:center; border-top:5px solid var(--primary);">
-        <i class="fas fa-map-marked-alt" style="font-size:2.5rem; color:var(--primary); margin-bottom: 15px;"></i>
-        <h3 style="margin-bottom:10px; font-size: 1.5rem;">আমাদের লোকেশন</h3>
-        <p style="font-size:1rem; color:#555;">টিকারখানজি বাস স্ট্যান্ড, কাটোয়া (সেমফোর্ড স্কুলের সামনে)</p>
+    <section style="background:#0f172a; padding:50px 5%; text-align:center; border-top:5px solid var(--primary);">
+        <i class="fas fa-map-marked-alt" style="font-size:3rem; color:var(--primary); margin-bottom: 20px;"></i>
+        <h3 style="margin-bottom:10px; font-size: 1.8rem;">আমাদের লোকেশন</h3>
+        <p style="font-size:1.1rem; color:#cbd5e1;">টিকারখানজি বাস স্ট্যান্ড, কাটোয়া (সেমফোর্ড স্কুলের সামনে)</p>
         <div style="margin-top:30px; display:flex; gap:15px; justify-content:center; flex-wrap:wrap;">
             <a href="https://www.google.com/search?q=tikarkhanji+jawaharlal+nehru+yuva+computer+training+institute" target="_blank" class="btn btn-primary" style="display:flex; align-items:center; gap:8px;">
                 <i class="fas fa-directions"></i> Google Map
@@ -497,44 +482,53 @@
         </div>
     </section>
 
-    <footer style="background:#222; color:white; padding: 20px; text-align: center;">
-        <p style="font-size:0.8rem; opacity: 0.8;">© 2026 TIKARKHANJI JAWAHARLAL NEHRU YOUTH COMPUTER TRAINING INSTITUTE</p>
+    <footer style="background:#020617; color:#94a3b8; padding: 30px 20px; text-align: center; border-top: 1px solid #1e293b;">
+        <p style="font-size:0.9rem;">© 2026 TIKARKHANJI JAWAHARLAL NEHRU YOUTH COMPUTER TRAINING INSTITUTE</p>
     </footer>
 
     <div class="modal" id="detailsModal">
         <div class="modal-content">
             <span class="close-btn" onclick="closeDetails()">×</span>
             <div id="modalBody"></div>
-            <button onclick="openForm()" class="btn btn-query" style="width:100%; margin-top:20px; display:block;">Apply Now</button>
+            <button onclick="openForm()" class="btn btn-primary" style="width:100%; margin-top:20px; display:block;">Apply Now</button>
+        </div>
+    </div>
+
+    <div class="modal" id="imgModal" onclick="closeImgModal()">
+        <div class="modal-content" style="background:transparent; box-shadow:none; padding:0; width:auto; max-width:90%; border:none;">
+            <span class="close-btn" onclick="closeImgModal()" style="color:white; top:-40px; right:0;">×</span>
+            <img id="fullImage" src="" style="width:100%; height:auto; border-radius:10px; border:4px solid white; box-shadow:0 0 50px rgba(0,0,0,0.9);">
         </div>
     </div>
 
     <div class="modal" id="formModal">
         <div class="modal-content">
             <span class="close-btn" onclick="closeForm()">×</span>
-            <h3 style="text-align:center; color:var(--primary);">Admission Form</h3><br>
-            <form id="inquiryForm" style="display:flex; flex-direction:column; gap:15px;">
-                <input type="text" placeholder="Name" required style="padding:12px; border:1px solid #ddd; border-radius:8px; width:100%;">
-                <input type="tel" placeholder="Mobile" required style="padding:12px; border:1px solid #ddd; border-radius:8px; width:100%;">
-                <textarea placeholder="Address" rows="3" style="padding:12px; border:1px solid #ddd; border-radius:8px; width:100%;"></textarea>
-                <button type="submit" class="btn btn-primary" style="width:100%;">Submit</button>
+            <h3 style="text-align:center; color:var(--primary-glow); margin-bottom: 20px; font-size: 1.5rem;">Admission Form</h3>
+            <form id="whatsappForm">
+                <input type="text" id="userName" placeholder="আপনার নাম (Name)" required>
+                <input type="tel" id="userMobile" placeholder="মোবাইল নম্বর (Mobile)" required>
+                <input type="hidden" id="selectedCourse" value="">
+                <p style="margin-bottom:15px; font-size:0.9rem; color:#cbd5e1;">Interested Course: <span id="courseDisplay" style="font-weight:bold; color:var(--primary-glow);">General</span></p>
+                <button type="submit" class="btn btn-primary" style="width:100%; display: flex; align-items: center; justify-content: center; gap: 10px;">
+                    <i class="fab fa-whatsapp"></i> Send on WhatsApp
+                </button>
             </form>
-            <div id="successMsg" style="display:none; text-align:center; color:var(--whatsapp); margin-top:15px; font-weight:bold;">Successfully Submitted!</div>
         </div>
     </div>
 
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
-        AOS.init({ duration: 800, once: true, disable: 'mobile' });
+        AOS.init({ duration: 1000, once: true });
 
-        // Toast
+        // Toast Notification
         setInterval(() => {
             const t = document.getElementById('admissionToast');
             t.classList.add('active');
             setTimeout(() => t.classList.remove('active'), 5000);
         }, 15000);
 
-        // Counter Animation
+        // Counter Logic
         const counterSection = document.querySelector('#counterSection');
         const counters = document.querySelectorAll('.counter-number');
         let started = false;
@@ -544,13 +538,13 @@
                 counter.innerText = '0';
                 const target = +counter.getAttribute('data-target');
                 const duration = 2000; 
-                const increment = target / (duration / 20); 
+                const increment = target / (duration / 25); 
 
                 const updateCounter = () => {
                     const c = +counter.innerText.replace('+', '');
                     if (c < target) {
                         counter.innerText = `${Math.ceil(c + increment)}`;
-                        setTimeout(updateCounter, 20);
+                        setTimeout(updateCounter, 25);
                     } else {
                         counter.innerText = target + "+";
                     }
@@ -567,7 +561,7 @@
         }, { threshold: 0.5 });
         observer.observe(counterSection);
 
-        // Course & Modal Logic
+        // Course Data
         const courses = {
             ai: { title: "🔥 AI Diploma Course", list: ["Computer Fundamentals", "MS Office (Advanced)", "Internet & Email", "Artificial Intelligence Tools", "Coding (HTML/CSS)", "Tally & Accounting"] },
             basic: { title: "💻 Computer Basic", list: ["Typing", "Notepad/Paint", "MS Word, Excel, PPT", "Internet Surfing"] },
@@ -575,27 +569,54 @@
             tally: { title: "📊 Tally & Excel", list: ["Accounting Rules", "Tally Prime with GST", "Advanced Excel Formula", "Payroll"] },
             graphics: { title: "🎨 Graphics Design", list: ["Photoshop", "Logo Designing", "Banner Creation", "AI Design Tools"] }
         };
+
+        let activeCourse = "General Inquiry";
+
+        // Details Modal
         function showDetails(k) {
-            document.getElementById('modalBody').innerHTML = `<h2 style="color:var(--primary); font-size:1.5rem;">${courses[k].title}</h2><ul class="syllabus-list">${courses[k].list.map(i=>`<li>${i}</li>`).join('')}</ul>`;
+            activeCourse = courses[k].title;
+            document.getElementById('modalBody').innerHTML = `<h2 style="color:var(--primary-glow); font-size:1.5rem; margin-bottom:15px;">${courses[k].title}</h2><ul class="syllabus-list" style="padding-left:20px; text-align:left; line-height:1.8; color:#e2e8f0;">${courses[k].list.map(i=>`<li>${i}</li>`).join('')}</ul>`;
             document.getElementById('detailsModal').style.display = 'flex';
         }
         function closeDetails() { document.getElementById('detailsModal').style.display = 'none'; }
-        function openForm() { closeDetails(); document.getElementById('formModal').style.display = 'flex'; }
-        function closeForm() { document.getElementById('formModal').style.display = 'none'; }
-        window.onclick = function(event) {
-            const m1 = document.getElementById('detailsModal');
-            const m2 = document.getElementById('formModal');
-            if (event.target == m1) m1.style.display = "none";
-            if (event.target == m2) m2.style.display = "none";
+        
+        // Image Zoom Modal
+        function openImageModal(src) {
+            document.getElementById('fullImage').src = src;
+            document.getElementById('imgModal').style.display = 'flex';
         }
-        document.getElementById('inquiryForm').onsubmit = function(e){
-            e.preventDefault();
-            this.style.display='none';
-            document.getElementById('successMsg').style.display='block';
-            setTimeout(() => { closeForm(); this.reset(); this.style.display='flex'; document.getElementById('successMsg').style.display='none'; }, 2500);
+        function closeImgModal() {
+            document.getElementById('imgModal').style.display = 'none';
         }
 
-        // Slider
+        // Admission Form
+        function openForm(courseName) { 
+            closeDetails(); 
+            if(courseName) activeCourse = courseName;
+            document.getElementById('courseDisplay').innerText = activeCourse;
+            document.getElementById('formModal').style.display = 'flex'; 
+        }
+        function closeForm() { document.getElementById('formModal').style.display = 'none'; }
+        
+        // WhatsApp Send Logic
+        document.getElementById('whatsappForm').onsubmit = function(e){
+            e.preventDefault();
+            var name = document.getElementById('userName').value;
+            var mobile = document.getElementById('userMobile').value;
+            var message = `*Admission Inquiry*%0A%0A👤 Name: ${name}%0A📱 Mobile: ${mobile}%0A🎓 Course: ${activeCourse}%0A%0AHello Sir, I am interested in this course.`;
+            window.open(`https://wa.me/919635419644?text=${message}`, '_blank');
+            closeForm();
+            this.reset();
+        }
+
+        // Close Modals on Outside Click
+        window.onclick = function(event) {
+            if (event.target == document.getElementById('detailsModal')) closeDetails();
+            if (event.target == document.getElementById('formModal')) closeForm();
+            if (event.target == document.getElementById('imgModal')) closeImgModal();
+        }
+
+        // Automatic Slider
         let sIdx = 0;
         setInterval(() => {
             sIdx = (sIdx + 1) % 5;
